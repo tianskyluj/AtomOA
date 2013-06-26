@@ -179,6 +179,9 @@ namespace ATOM.BLL
         //{
         //return dal.GetList(PageSize,PageIndex,strWhere);
         //}
+        #endregion  Method
+
+        #region 自定义方法
 
         /// <summary>
         /// 是否允许用户登录名密码是否有效
@@ -186,12 +189,12 @@ namespace ATOM.BLL
         /// <param name="userName">用户名</param>
         /// <param name="passWord">密码</param>
         /// <returns></returns>
-        public bool Login(string userName,string passWord)
+        public bool Login(string userName, string passWord)
         {
-            List<ATOM.Model.SystemUser> userList = GetModelList("userName='"+userName+"' and passWord='"+passWord+"'");
+            List<ATOM.Model.SystemUser> userList = GetModelList("userName='" + userName + "' and passWord='" + passWord + "'");
             if (userList.Count > 0)
             {
-                Maticsoft.Common.DataSession.setSession("siteUser",userList[0]);
+                Maticsoft.Common.DataSession.setSession("siteUser", userList[0]);
                 return true;
             }
             else
@@ -227,6 +230,6 @@ namespace ATOM.BLL
             return obj;
         }
 
-        #endregion  Method
+        #endregion
     }
 }

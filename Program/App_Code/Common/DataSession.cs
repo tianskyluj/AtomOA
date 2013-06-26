@@ -44,7 +44,5 @@ namespace Maticsoft.Common
         {
             HttpContext.Current.Session[Sessionname] = Sessionvalue;
         }
-
-        
     }
 }
