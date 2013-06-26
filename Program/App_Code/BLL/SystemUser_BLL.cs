@@ -3,6 +3,7 @@ using System.Data;
 using System.Collections.Generic;
 using Maticsoft.Common;
 using ATOM.Model;
+using System.Web;
 namespace ATOM.BLL
 {
     /// <summary>
@@ -197,6 +198,33 @@ namespace ATOM.BLL
             {
                 return false;
             }
+        }
+
+        /// <summary>
+        /// 判断是否登录
+        /// </summary>
+        /// <returns></returns>
+        public static bool ifLogin()
+        {
+            if (getSessionSiteUser() != null)
+                return true;
+            else
+                return false;
+        }
+
+        //取得Session中的用户ID
+        public static ATOM.Model.SystemUser getSessionSiteUser()
+        {
+            ATOM.Model.SystemUser obj = new ATOM.Model.SystemUser();
+            try
+            {
+                obj = (ATOM.Model.SystemUser)HttpContext.Current.Session["siteUser"];
+            }
+            catch
+            {
+
+            }
+            return obj;
         }
 
         #endregion  Method

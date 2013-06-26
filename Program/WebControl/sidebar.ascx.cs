@@ -9,6 +9,6 @@ public partial class webControl_sidebar : System.Web.UI.UserControl
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        this.name.Text = Maticsoft.Common.DataSession.getSessionSiteUser().Name;
+        this.name.Text = ATOM.BLL.SystemUser.getSessionSiteUser().Name.ToStr();
     }
 }

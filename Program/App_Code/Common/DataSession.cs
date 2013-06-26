@@ -23,20 +23,6 @@ namespace Maticsoft.Common
         {
             HttpContext.Current.Session.Clear();
         }
-        //取得Session中的用户ID
-        public static ATOM.Model.SystemUser getSessionSiteUser()
-        {
-            ATOM.Model.SystemUser obj = new ATOM.Model.SystemUser();
-            try
-            {
-                obj = (ATOM.Model.SystemUser)HttpContext.Current.Session["siteUser"];
-            }
-            catch
-            {
-
-            }
-            return obj;
-        }
         
         //取得Session中的变量值
         public static string getSessionValue(string Sessinname)
@@ -59,16 +45,6 @@ namespace Maticsoft.Common
             HttpContext.Current.Session[Sessionname] = Sessionvalue;
         }
 
-        /// <summary>
-        /// 判断是否登录
-        /// </summary>
-        /// <returns></returns>
-        public static bool ifLogin()
-        {
-            if (getSessionSiteUser() != null)
-                return true;
-            else
-                return false;
-        }
+        
     }
 }

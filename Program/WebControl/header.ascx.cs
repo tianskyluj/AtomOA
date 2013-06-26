@@ -15,7 +15,7 @@ public partial class webControl_header : System.Web.UI.UserControl
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Maticsoft.Common.DataSession.getSessionSiteUser().UserName != "lan")
+        if (ATOM.BLL.SystemUser.getSessionSiteUser().UserName != "lan")
             this.systemSetting.Visible = false;
     }
 

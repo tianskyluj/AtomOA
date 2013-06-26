@@ -20,7 +20,7 @@ public class BasePage : System.Web.UI.Page
     protected override void OnPreInit(EventArgs e)
     {
         base.OnPreInit(e);
-        if (!Maticsoft.Common.DataSession.ifLogin())
+        if (!ATOM.BLL.SystemUser.ifLogin())
         {
             //这里写 跳转到登陆页面：例如： 
             Response.Redirect(inc.getApplicationPath() + "/Web/login.aspx");
