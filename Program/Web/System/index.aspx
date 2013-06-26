@@ -90,9 +90,9 @@ function updateGlobalSetting() {
         success: function (json) {
             if (json.d == "1") {
                 showSuccess("成功修改全局变量");
-                $('#brand').html($('#companyName_edit').val());
+                $('.brand').html($('#companyName_edit').val());
             }
-            else showError(json.d);
+            else showError("修改出错:"+json.d);
         },
         error: function (error) {
             alert("调用出错" + error.responseText);
