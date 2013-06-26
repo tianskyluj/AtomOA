@@ -180,6 +180,21 @@ namespace ATOM.BLL
         }
 
         #endregion  Method
+
+        #region 自定义方法
+
+        /// <summary>
+        /// 从缓存中获取公司名称
+        /// </summary>
+        /// <returns></returns>
+        public static string GetCompanyName()
+        {
+            ATOM.BLL.GlobalSetting globalObj_bll = new ATOM.BLL.GlobalSetting();
+            ATOM.Model.GlobalSetting globalObj_model = globalObj_bll.GetModelByCache(1);
+            return globalObj_model.CompanyName.ToStr();
+        }
+
+        #endregion
     }
 }
 
