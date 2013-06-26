@@ -9,6 +9,6 @@ public partial class webControl_head : System.Web.UI.UserControl
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        this.title.InnerHtml = ATOM.BLL.GlobalSetting.GetCompanyName();
     }
 }

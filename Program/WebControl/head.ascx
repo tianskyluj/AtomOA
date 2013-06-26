@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="head.ascx.cs" Inherits="webControl_head" %>
 
     <meta charset="utf-8">
-    <title>原子OA</title>
+    <title runat="server" id="title"></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="description" content=""/>
     <meta name="author" content="">
