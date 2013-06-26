@@ -1,0 +1,44 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="sidebar.ascx.cs" Inherits="webControl_sidebar" %>
+<aside class="social-sidebar sidebar-full">
+    <div class="social-sidebar-content">
+        <div class="scrollable">
+            <div>
+                <div class="user">
+                    <img class="avatar" width="25" height="25" src="../assets/img/avatar-30.png" alt="Julio Marquez">
+                    <span data-toggle="dropdown"><asp:Label ID="name" runat="server"></asp:Label></span>
+                </div>
+                <div class="navigation-sidebar">
+                    <i class="switch-sidebar-icon icon-chevron-left"></i>
+                    <i class="switch-sidebar-full icon-chevron-right"></i>
+                    <span>我的菜单</span>
+                </div>
+                </div>
+            <section class="menu">
+                <div class="accordion" id="accordion2">
+                    <div class="accordion-group active">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle opened" href="/Home/Index">
+                                <img src="../assets/img/icons/stuttgart-icon-pack/32x32/home.png" alt="工作台">
+                                <span>工作台</span><span class="badge">9</span> 
+                            </a>
+                        </div>
+                    </div>
+                    <div class="accordion-group ">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle " data-toggle="collapse" data-parent="#accordion2" href="#collapse-ui-elements">
+                            <img src="../assets/img/icons/stuttgart-icon-pack/32x32/database.png" alt="UI Elements">
+                            <span>UI Elements </span><span class="arrow"></span> </a>
+                        </div>
+                        <ul id="collapse-ui-elements" class="accordion-body collapse nav nav-list collapse ">
+                            <li><a href="ui-elements/general.html">General</a></li>
+                            <li><a href="ui-elements/buttons.html">Buttons</a></li>
+                            <li><a href="ui-elements/tabs-accordions.html">Tabs &amp; Accodions</a></li>
+                            <li><a href="ui-elements/typography.html">Typography</a></li><li><a href="ui-elements/icons.html">Icons</a>
+                            </li><li><a href="ui-elements/grid.html">Grid</a></li>
+                        </ul> 
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</aside>

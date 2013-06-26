@@ -1,0 +1,189 @@
+﻿using System;
+using System.Data;
+using System.Configuration;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.HtmlControls;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.IO;
+using System.Net;
+using System.Text;
+using System.Drawing;
+using System.Reflection;
+using System.Security.Cryptography;
+using System.Text.RegularExpressions;
+using System.Management;
+
+
+/// <summary>
+/// 扩展方法
+/// </summary>
+public static class ObjectExtension
+{
+    /// <summary>
+    /// 把日期转换成：2011-12-01的格式
+    /// </summary>
+    /// <param name="date"></param>
+    /// <returns></returns>
+    public static string ToDateString(this DateTime date)
+    {
+        return date.ToString("yyyy-MM-dd");
+    }
+
+    /// <summary>
+    /// 把字符串转化成Int32，如果出错则返回0
+    /// </summary>
+    /// <param name="intString"></param>
+    /// <returns></returns>
+    public static int ToInt(this string intString)
+    {
+        try
+        {
+            return Convert.ToInt32(intString);
+        }
+        catch { return 0; }
+    }
+    /// <summary>
+    /// 把object对象转化成Int32，如果出错则返回0
+    /// </summary>
+    /// <param name="intString"></param>
+    /// <returns></returns>
+    public static int ToInt(this object intString)
+    {
+        try
+        {
+            return Convert.ToInt32(intString);
+        }
+        catch { return 0; }
+    }
+
+    /// <summary>
+    /// 把字符串转化成Int32，如果出错则返回默认值
+    /// </summary>
+    /// <param name="intString"></param>
+    /// <param name="defaultValue">默认值</param>
+    /// <returns></returns>
+    public static int ToInt(this string intString, int defaultValue)
+    {
+        try
+        {
+            return Convert.ToInt32(intString);
+        }
+        catch { return defaultValue; }
+    }
+
+    /// <summary>
+    ///  把object对象转化成Int32，如果出错则返回默认值
+    /// </summary>
+    /// <param name="intObject"></param>
+    /// <param name="defaultValue"></param>
+    /// <returns></returns>
+    public static int ToInt(this object intObject, int defaultValue)
+    {
+        try
+        {
+            return Convert.ToInt32(intObject);
+        }
+        catch { return defaultValue; }
+    }
+
+    /// <summary>
+    /// 把日期字段串转化成日期格式，如果出错，则返回new DateTime()
+    /// </summary>
+    /// <param name="dateTimeString"></param>
+    /// <returns></returns>
+    public static DateTime ToDateTime(this string dateTimeString)
+    {
+        try
+        {
+            return Convert.ToDateTime(dateTimeString);
+        }
+        catch { return DateTime.Now; }
+    }
+
+    /// <summary>
+    /// 把日期object对象转化成日期格式，如果出错，则返回new DateTime()
+    /// </summary>
+    /// <param name="dateTimeObject"></param>
+    /// <returns></returns>
+    public static DateTime ToDateTime(this object dateTimeObject)
+    {
+        try
+        {
+            return Convert.ToDateTime(dateTimeObject);
+        }
+        catch { return DateTime.Now; }
+    }
+
+    /// <summary>
+    /// 把日期object对象转化成日期格式，如果出错，则返回默认值
+    /// </summary>
+    /// <param name="dateTimeObject"></param>
+    /// <param name="defaultValue"></param>
+    /// <returns></returns>
+    public static DateTime ToDateTime(this object dateTimeObject, DateTime defaultValue)
+    {
+        try
+        {
+            return Convert.ToDateTime(dateTimeObject);
+        }
+        catch { return defaultValue; }
+    }
+
+    /// <summary>
+    /// 把字符串转化成double，如果出错则返回0
+    /// </summary>
+    /// <param name="doubleString"></param>
+    /// <returns></returns>
+    public static double ToDouble(this string doubleString)
+    {
+        try
+        {
+            return Convert.ToDouble(doubleString);
+        }
+        catch { return 0; }
+    }
+
+    /// <summary>
+    /// 把object对象转化成double，如果出错则返回0
+    /// </summary>
+    /// <param name="doubleObject"></param>
+    /// <returns></returns>
+    public static double ToDouble(this object doubleObject)
+    {
+        try
+        {
+            return Convert.ToDouble(doubleObject);
+        }
+        catch { return 0; }
+    }
+
+    /// <summary>
+    /// 把object对象转化成double，如果出错则返回默认值
+    /// </summary>
+    /// <param name="doubleObject"></param>
+    /// <param name="defaultValue"></param>
+    /// <returns></returns>
+    public static double ToDouble(this object doubleObject, double defaultValue)
+    {
+        try
+        {
+            return Convert.ToDouble(doubleObject);
+        }
+        catch { return defaultValue; }
+    }
+
+    /// <summary>
+    /// 设置DropDownList的选定值
+    /// </summary>
+    /// <param name="list"></param>
+    /// <param name="value"></param>
+    public static void SetValue(this DropDownList list, string value)
+    {
+        list.SelectedIndex = list.Items.IndexOf(list.Items.FindByValue(value));
+    }
+}
