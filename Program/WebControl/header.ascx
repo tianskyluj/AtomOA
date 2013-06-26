@@ -8,8 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </a>
-            <a class="brand" href="index.aspx" id="brand">
-            原子OA
+            <a class="brand" runat="server" href="../Web/index.aspx" id="brand">
             </a>
             <ul class="nav pull-right nav-indicators">
                 <li class="dropdown nav-notifications">

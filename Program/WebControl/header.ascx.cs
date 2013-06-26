@@ -17,6 +17,7 @@ public partial class webControl_header : System.Web.UI.UserControl
     {
         if (ATOM.BLL.SystemUser.getSessionSiteUser().UserName != "lan")
             this.systemSetting.Visible = false;
+        this.brand.InnerHtml = ATOM.BLL.GlobalSetting.GetCompanyName();
     }
 
     /// <summary>
