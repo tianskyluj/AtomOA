@@ -57,14 +57,14 @@ function changePassword() {
         showError("请重复新密码");
         return false;
     }
-    if (newPassword.lenth != newPasswordAgain) {
+    if (newPassword.trim() != newPasswordAgain.trim()) {
         showError("两次输入新密码不一致，请重新输入");
         return false;
     }
 
     var data = '{'
-                + ' oldPassword: "' + $('#telephone_edit').val() + '"'
-                + ',newPassword:"' + $('#email_edit').val() + '" '
+                + ' oldPassword: "' + oldPassword + '"'
+                + ',newPassword:"' + newPassword + '" '
                 + '}';
     $.ajax({
         type: "POST",
@@ -74,9 +74,9 @@ function changePassword() {
         dataType: "json",
         success: function (json) {
             if (json.d == "1") {
-                showSuccess("个人资料更新成功");
+                showSuccess("密码修改成功 ^_^");
             }
-            else showError("修改出错:" + json.d);
+            else showError(json.d);
         },
         error: function (error) {
             alert("调用出错" + error.responseText);
