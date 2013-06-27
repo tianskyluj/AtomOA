@@ -56,7 +56,7 @@ public partial class Web_System_Profile : System.Web.UI.Page
     }
 
     /// <summary>
-    /// 更新全局变量
+    /// 修改密码 
     /// </summary>
     /// <param name="companyName"></param>
     /// <param name="modelId"></param>
@@ -67,11 +67,14 @@ public partial class Web_System_Profile : System.Web.UI.Page
         ATOM.BLL.SystemUser user_bll = new ATOM.BLL.SystemUser();
         ATOM.Model.SystemUser user_model = user_bll.GetModel(ATOM.BLL.SystemUser.getSessionSiteUser().Id);
 
-        
+        string oldPassword_encrypt = Maticsoft.Common.DEncrypt.DEncrypt.Encrypt(oldPassword.Trim());
+        if (oldPassword_encrypt.Trim() != user_model.PassWord.Trim())
+            return "旧密码输入不正确，请稍候尝试";
 
+        user_model.PassWord = Maticsoft.Common.DEncrypt.DEncrypt.Encrypt(newPassword.Trim());
         if (user_bll.Update(user_model))
             return "1";
         else
-            return "0";
+            return "修改没有成功，请稍候再试";
     }
 }

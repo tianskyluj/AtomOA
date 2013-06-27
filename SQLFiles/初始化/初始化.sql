@@ -1,5 +1,5 @@
 
--- 插入超级用户	用户名：lan 
+-- 插入超级用户	用户名：lan -- 密码：12346 (OrwmNwHIjJI=)
 truncate table SystemUser
 insert into SystemUser(userName,passWord,name)values('lan','2W9E012dgLzwivCZHVZUZQ==','唐富伟')
 

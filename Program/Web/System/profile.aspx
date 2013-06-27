@@ -101,5 +101,5 @@
     </div>
     </form>
 </body>
-<script src="PostJS/System_Profile.js"></script>
+<script src="../PostJS/System_Profile.js"></script>
 </html>

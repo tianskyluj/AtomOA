@@ -62,5 +62,5 @@
     </div>
     </form>
 </body>
-<script src="PostJS/System_Index.js"></script>
+<script src="../PostJS/System_Index.js"></script>
 </html>
