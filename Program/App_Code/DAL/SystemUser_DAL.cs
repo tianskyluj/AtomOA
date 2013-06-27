@@ -37,23 +37,43 @@ namespace ATOM.DAL
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("insert into SystemUser(");
-            strSql.Append("CompanyId,UserName,PassWord,Name,Phone,Email)");
+            strSql.Append("CompanyId,UserName,PassWord,Name,Phone,Email,QQ,Avatar,state,remark,createUser,createIp,createTime,updateUser,updateIp,updateTime)");
             strSql.Append(" values (");
-            strSql.Append("@CompanyId,@UserName,@PassWord,@Name,@Phone,@Email)");
+            strSql.Append("@CompanyId,@UserName,@PassWord,@Name,@Phone,@Email,@QQ,@Avatar,@state,@remark,@createUser,@createIp,@createTime,@updateUser,@updateIp,@updateTime)");
             strSql.Append(";select @@IDENTITY");
             SqlParameter[] parameters = {
 					new SqlParameter("@CompanyId", SqlDbType.Int,4),
-					new SqlParameter("@UserName", SqlDbType.NVarChar,50),
-					new SqlParameter("@PassWord", SqlDbType.NVarChar,50),
-					new SqlParameter("@Name", SqlDbType.NVarChar,50),
-					new SqlParameter("@Phone", SqlDbType.NVarChar,50),
-					new SqlParameter("@Email", SqlDbType.NVarChar,50)};
+					new SqlParameter("@UserName", SqlDbType.NVarChar,200),
+					new SqlParameter("@PassWord", SqlDbType.NVarChar,200),
+					new SqlParameter("@Name", SqlDbType.NVarChar,200),
+					new SqlParameter("@Phone", SqlDbType.NVarChar,200),
+					new SqlParameter("@Email", SqlDbType.NVarChar,200),
+					new SqlParameter("@QQ", SqlDbType.NVarChar,200),
+					new SqlParameter("@Avatar", SqlDbType.NVarChar,200),
+					new SqlParameter("@state", SqlDbType.Int,4),
+					new SqlParameter("@remark", SqlDbType.NVarChar,500),
+					new SqlParameter("@createUser", SqlDbType.Int,4),
+					new SqlParameter("@createIp", SqlDbType.NVarChar,50),
+					new SqlParameter("@createTime", SqlDbType.DateTime),
+					new SqlParameter("@updateUser", SqlDbType.Int,4),
+					new SqlParameter("@updateIp", SqlDbType.NVarChar,50),
+					new SqlParameter("@updateTime", SqlDbType.DateTime)};
             parameters[0].Value = model.CompanyId;
             parameters[1].Value = model.UserName;
             parameters[2].Value = model.PassWord;
             parameters[3].Value = model.Name;
             parameters[4].Value = model.Phone;
             parameters[5].Value = model.Email;
+            parameters[6].Value = model.QQ;
+            parameters[7].Value = model.Avatar;
+            parameters[8].Value = model.state;
+            parameters[9].Value = model.remark;
+            parameters[10].Value = model.createUser;
+            parameters[11].Value = model.createIp;
+            parameters[12].Value = model.createTime;
+            parameters[13].Value = model.updateUser;
+            parameters[14].Value = model.updateIp;
+            parameters[15].Value = model.updateTime;
 
             object obj = DbHelperSQL.GetSingle(strSql.ToString(), parameters);
             if (obj == null)
@@ -77,15 +97,35 @@ namespace ATOM.DAL
             strSql.Append("PassWord=@PassWord,");
             strSql.Append("Name=@Name,");
             strSql.Append("Phone=@Phone,");
-            strSql.Append("Email=@Email");
+            strSql.Append("Email=@Email,");
+            strSql.Append("QQ=@QQ,");
+            strSql.Append("Avatar=@Avatar,");
+            strSql.Append("state=@state,");
+            strSql.Append("remark=@remark,");
+            strSql.Append("createUser=@createUser,");
+            strSql.Append("createIp=@createIp,");
+            strSql.Append("createTime=@createTime,");
+            strSql.Append("updateUser=@updateUser,");
+            strSql.Append("updateIp=@updateIp,");
+            strSql.Append("updateTime=@updateTime");
             strSql.Append(" where Id=@Id");
             SqlParameter[] parameters = {
 					new SqlParameter("@CompanyId", SqlDbType.Int,4),
-					new SqlParameter("@UserName", SqlDbType.NVarChar,50),
-					new SqlParameter("@PassWord", SqlDbType.NVarChar,50),
-					new SqlParameter("@Name", SqlDbType.NVarChar,50),
-					new SqlParameter("@Phone", SqlDbType.NVarChar,50),
-					new SqlParameter("@Email", SqlDbType.NVarChar,50),
+					new SqlParameter("@UserName", SqlDbType.NVarChar,200),
+					new SqlParameter("@PassWord", SqlDbType.NVarChar,200),
+					new SqlParameter("@Name", SqlDbType.NVarChar,200),
+					new SqlParameter("@Phone", SqlDbType.NVarChar,200),
+					new SqlParameter("@Email", SqlDbType.NVarChar,200),
+					new SqlParameter("@QQ", SqlDbType.NVarChar,200),
+					new SqlParameter("@Avatar", SqlDbType.NVarChar,200),
+					new SqlParameter("@state", SqlDbType.Int,4),
+					new SqlParameter("@remark", SqlDbType.NVarChar,500),
+					new SqlParameter("@createUser", SqlDbType.Int,4),
+					new SqlParameter("@createIp", SqlDbType.NVarChar,50),
+					new SqlParameter("@createTime", SqlDbType.DateTime),
+					new SqlParameter("@updateUser", SqlDbType.Int,4),
+					new SqlParameter("@updateIp", SqlDbType.NVarChar,50),
+					new SqlParameter("@updateTime", SqlDbType.DateTime),
 					new SqlParameter("@Id", SqlDbType.Int,4)};
             parameters[0].Value = model.CompanyId;
             parameters[1].Value = model.UserName;
@@ -93,7 +133,17 @@ namespace ATOM.DAL
             parameters[3].Value = model.Name;
             parameters[4].Value = model.Phone;
             parameters[5].Value = model.Email;
-            parameters[6].Value = model.Id;
+            parameters[6].Value = model.QQ;
+            parameters[7].Value = model.Avatar;
+            parameters[8].Value = model.state;
+            parameters[9].Value = model.remark;
+            parameters[10].Value = model.createUser;
+            parameters[11].Value = model.createIp;
+            parameters[12].Value = model.createTime;
+            parameters[13].Value = model.updateUser;
+            parameters[14].Value = model.updateIp;
+            parameters[15].Value = model.updateTime;
+            parameters[16].Value = model.Id;
 
             int rows = DbHelperSQL.ExecuteSql(strSql.ToString(), parameters);
             if (rows > 0)
@@ -157,7 +207,7 @@ namespace ATOM.DAL
         {
 
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select  top 1 Id,CompanyId,UserName,PassWord,Name,Phone,Email from SystemUser ");
+            strSql.Append("select  top 1 Id,CompanyId,UserName,PassWord,Name,Phone,Email,QQ,Avatar,state,remark,createUser,createIp,createTime,updateUser,updateIp,updateTime from SystemUser ");
             strSql.Append(" where Id=@Id");
             SqlParameter[] parameters = {
 					new SqlParameter("@Id", SqlDbType.Int,4)
@@ -196,6 +246,46 @@ namespace ATOM.DAL
                 {
                     model.Email = ds.Tables[0].Rows[0]["Email"].ToString();
                 }
+                if (ds.Tables[0].Rows[0]["QQ"] != null && ds.Tables[0].Rows[0]["QQ"].ToString() != "")
+                {
+                    model.QQ = ds.Tables[0].Rows[0]["QQ"].ToString();
+                }
+                if (ds.Tables[0].Rows[0]["Avatar"] != null && ds.Tables[0].Rows[0]["Avatar"].ToString() != "")
+                {
+                    model.Avatar = ds.Tables[0].Rows[0]["Avatar"].ToString();
+                }
+                if (ds.Tables[0].Rows[0]["state"] != null && ds.Tables[0].Rows[0]["state"].ToString() != "")
+                {
+                    model.state = int.Parse(ds.Tables[0].Rows[0]["state"].ToString());
+                }
+                if (ds.Tables[0].Rows[0]["remark"] != null && ds.Tables[0].Rows[0]["remark"].ToString() != "")
+                {
+                    model.remark = ds.Tables[0].Rows[0]["remark"].ToString();
+                }
+                if (ds.Tables[0].Rows[0]["createUser"] != null && ds.Tables[0].Rows[0]["createUser"].ToString() != "")
+                {
+                    model.createUser = int.Parse(ds.Tables[0].Rows[0]["createUser"].ToString());
+                }
+                if (ds.Tables[0].Rows[0]["createIp"] != null && ds.Tables[0].Rows[0]["createIp"].ToString() != "")
+                {
+                    model.createIp = ds.Tables[0].Rows[0]["createIp"].ToString();
+                }
+                if (ds.Tables[0].Rows[0]["createTime"] != null && ds.Tables[0].Rows[0]["createTime"].ToString() != "")
+                {
+                    model.createTime = DateTime.Parse(ds.Tables[0].Rows[0]["createTime"].ToString());
+                }
+                if (ds.Tables[0].Rows[0]["updateUser"] != null && ds.Tables[0].Rows[0]["updateUser"].ToString() != "")
+                {
+                    model.updateUser = int.Parse(ds.Tables[0].Rows[0]["updateUser"].ToString());
+                }
+                if (ds.Tables[0].Rows[0]["updateIp"] != null && ds.Tables[0].Rows[0]["updateIp"].ToString() != "")
+                {
+                    model.updateIp = ds.Tables[0].Rows[0]["updateIp"].ToString();
+                }
+                if (ds.Tables[0].Rows[0]["updateTime"] != null && ds.Tables[0].Rows[0]["updateTime"].ToString() != "")
+                {
+                    model.updateTime = DateTime.Parse(ds.Tables[0].Rows[0]["updateTime"].ToString());
+                }
                 return model;
             }
             else
@@ -210,7 +300,7 @@ namespace ATOM.DAL
         public DataSet GetList(string strWhere)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select Id,CompanyId,UserName,PassWord,Name,Phone,Email ");
+            strSql.Append("select Id,CompanyId,UserName,PassWord,Name,Phone,Email,QQ,Avatar,state,remark,createUser,createIp,createTime,updateUser,updateIp,updateTime ");
             strSql.Append(" FROM SystemUser ");
             if (strWhere.Trim() != "")
             {
@@ -230,7 +320,7 @@ namespace ATOM.DAL
             {
                 strSql.Append(" top " + Top.ToString());
             }
-            strSql.Append(" Id,CompanyId,UserName,PassWord,Name,Phone,Email ");
+            strSql.Append(" Id,CompanyId,UserName,PassWord,Name,Phone,Email,QQ,Avatar,state,remark,createUser,createIp,createTime,updateUser,updateIp,updateTime ");
             strSql.Append(" FROM SystemUser ");
             if (strWhere.Trim() != "")
             {
@@ -315,3 +405,4 @@ namespace ATOM.DAL
         #endregion  Method
     }
 }
+

@@ -7,12 +7,15 @@ DROP TABLE [dbo].[SystemUser]
 GO
 
 CREATE TABLE [dbo].[SystemUser](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Id] [int] IDENTITY(1,1) NOT NULL,	
+	[CompanyId] [int] NULL DEFAULT ((0)),
 	[UserName] [nvarchar](200) NULL,
 	[PassWord] [nvarchar](200) NULL,
 	[Name] [nvarchar](200) NULL,
 	[Phone] [nvarchar](200) NULL,
 	[Email] [nvarchar](200) NULL,
+	[QQ] [nvarchar](200) NULL,
+	[Avatar] [nvarchar](200) NULL,
 	
 	[state] [int] NULL DEFAULT ((0)),
 	[remark] [nvarchar](500) NULL,

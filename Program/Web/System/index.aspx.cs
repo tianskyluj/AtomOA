@@ -46,15 +46,11 @@ public partial class Web_System_index : BasePage
     }
 
     /// <summary>
-    /// 保存全局设置的修改
+    /// 更新全局变量
     /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    protected void confirm_globalSetting_Click(object sender, EventArgs e)
-    {
-        
-    }
-
+    /// <param name="companyName"></param>
+    /// <param name="modelId"></param>
+    /// <returns></returns>
     [WebMethod]
     public static string updateGlobalSetting(string companyName,string modelId)
     {

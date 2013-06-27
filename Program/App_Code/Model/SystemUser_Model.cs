@@ -11,12 +11,22 @@ namespace ATOM.Model
         { }
         #region Model
         private int _id;
-        private int? _companyid;
+        private int? _companyid = 0;
         private string _username;
         private string _password;
         private string _name;
         private string _phone;
         private string _email;
+        private string _qq;
+        private string _avatar;
+        private int? _state = 0;
+        private string _remark;
+        private int? _createuser = 0;
+        private string _createip;
+        private DateTime? _createtime = DateTime.Now;
+        private int? _updateuser = 0;
+        private string _updateip;
+        private DateTime? _updatetime = DateTime.Now;
         /// <summary>
         /// 
         /// </summary>
@@ -73,7 +83,88 @@ namespace ATOM.Model
             set { _email = value; }
             get { return _email; }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string QQ
+        {
+            set { _qq = value; }
+            get { return _qq; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Avatar
+        {
+            set { _avatar = value; }
+            get { return _avatar; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public int? state
+        {
+            set { _state = value; }
+            get { return _state; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string remark
+        {
+            set { _remark = value; }
+            get { return _remark; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public int? createUser
+        {
+            set { _createuser = value; }
+            get { return _createuser; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string createIp
+        {
+            set { _createip = value; }
+            get { return _createip; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public DateTime? createTime
+        {
+            set { _createtime = value; }
+            get { return _createtime; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public int? updateUser
+        {
+            set { _updateuser = value; }
+            get { return _updateuser; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string updateIp
+        {
+            set { _updateip = value; }
+            get { return _updateip; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public DateTime? updateTime
+        {
+            set { _updatetime = value; }
+            get { return _updatetime; }
+        }
         #endregion Model
 
     }
 }
+
