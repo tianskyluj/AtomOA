@@ -8,15 +8,15 @@ GO
 
 CREATE TABLE [dbo].[GlobalSetting](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[CompanyName] [nvarchar](200) NULL,
+	[CompanyName] [nvarchar](200) NULL DEFAULT '',
 	
 	[state] [int] NULL DEFAULT ((0)),
-	[remark] [nvarchar](500) NULL,
+	[remark] [nvarchar](500) NULL DEFAULT '',
 	[createUser] [int] NULL DEFAULT ((0)),
-	[createIp] [nvarchar](50) NULL,
+	[createIp] [nvarchar](50) NULL DEFAULT '',
 	[createTime] [datetime] NULL DEFAULT (getdate()),
 	[updateUser] [int] NULL DEFAULT ((0)),
-	[updateIp] [nvarchar](50) NULL,
+	[updateIp] [nvarchar](50) NULL DEFAULT '',
 	[updateTime] [datetime] NULL DEFAULT (getdate()),
  PRIMARY KEY CLUSTERED 
 (
