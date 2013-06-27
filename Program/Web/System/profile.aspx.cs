@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Services;
 
-public partial class Web_System_Profile : System.Web.UI.Page
+public partial class Web_System_Profile : BasePage
 {
     protected void Page_Load(object sender, EventArgs e)
     {

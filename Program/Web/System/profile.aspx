@@ -19,9 +19,9 @@
             <div class="social-box">
                 <div class="body">
                     <ul id="myTab" class="nav nav-tabs">
-                        <li class="active"><a href="#basic" data-toggle="tab"><i class="icon-user"></i> 基本资料</a></li>
-                        <li style="display:none" class=""><a href="#avatar" data-toggle="tab"><i class="icon-picture"></i> 设置头像</a></li>
-                        <li class=""><a href="#changePassword" data-toggle="tab"><i class="icon-key"></i> 重置密码</a></li>
+                        <li class="active"><a href="#basic" data-toggle="tab"><i class="icon-user"></i>基本资料</a></li>
+                        <li class=""><a href="#avatar" data-toggle="tab"><i class="icon-picture"></i>设置头像</a></li>
+                        <li class=""><a href="#changePassword" data-toggle="tab"><i class="icon-key"></i>重置密码</a></li>
                     </ul>
                     <div id="myTabContent" class="tab-content">
                         <div class="tab-pane fade active in" id="basic">
@@ -58,6 +58,38 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="tab-pane fade " id="avatar">
+                            <div class="row-fluid">
+                                <div class="span6">
+                                    <div class="social-box">
+                                        <div class="body">
+                                            <h3>
+                                                Image upload widgets</h3>
+                                            <div class="row-fluid">
+                                                <div class="span6">
+                                                    <div class="fileupload fileupload-new" data-provides="fileupload">
+                                                        <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+                                                            <img src="../assets/img/plugins/bootstrap-fileupload/no-image.png" alt="Selected image"/>
+                                                        </div>
+                                                        <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px;
+                                                            max-height: 150px; line-height: 20px;">
+                                                        </div>
+                                                        <div>
+                                                            <span class="btn btn-file">
+                                                                <span class="fileupload-new">选择图片</span>
+                                                                <span class="fileupload-exists">修改</span>
+                                                                <input type="file">
+                                                            </span> 
+                                                            <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">移除</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="tab-pane fade " id="changePassword">
                             <div class="row-fluid">
                                 <div class="span12">
@@ -66,21 +98,24 @@
                                             <label class="control-label">
                                                 旧密码</label>
                                             <div class="controls">
-                                                <asp:TextBox ID="oldPassword_edit" TextMode="Password" runat="server" CssClass="input-xlarge" placeholder="请输入旧密码"></asp:TextBox>
+                                                <asp:TextBox ID="oldPassword_edit" TextMode="Password" runat="server" CssClass="input-xlarge"
+                                                    placeholder="请输入旧密码"></asp:TextBox>
                                             </div>
                                         </div>
                                         <div class="control-group">
                                             <label class="control-label">
                                                 新密码</label>
                                             <div class="controls">
-                                                <asp:TextBox ID="newPassword_edit" TextMode="Password" runat="server" CssClass="input-xlarge" placeholder="请输入新密码"></asp:TextBox>
+                                                <asp:TextBox ID="newPassword_edit" TextMode="Password" runat="server" CssClass="input-xlarge"
+                                                    placeholder="请输入新密码"></asp:TextBox>
                                             </div>
                                         </div>
                                         <div class="control-group">
                                             <label class="control-label">
                                                 再次输入新密码</label>
                                             <div class="controls">
-                                                <asp:TextBox ID="newPasswordAgain_edit" TextMode="Password" runat="server" CssClass="input-xlarge" placeholder="请再次输入新密码"></asp:TextBox>
+                                                <asp:TextBox ID="newPasswordAgain_edit" TextMode="Password" runat="server" CssClass="input-xlarge"
+                                                    placeholder="请再次输入新密码"></asp:TextBox>
                                             </div>
                                         </div>
                                         <div>
@@ -101,5 +136,7 @@
     </div>
     </form>
 </body>
+
 <script src="../PostJS/System_Profile.js"></script>
+
 </html>

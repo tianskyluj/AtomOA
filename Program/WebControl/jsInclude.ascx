@@ -21,3 +21,4 @@
     <script src="../assets/js/justGage/resources/js/justgage.1.0.1.min.js"></script>
     <script src="../assets/js/dashboard.js"></script>
     <script src="../assets/js/inc.js"></script>
+    <script src="../assets/js/bootstrap-fileupload/bootstrap-fileupload.min.js"></script>

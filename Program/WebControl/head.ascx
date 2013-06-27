@@ -13,7 +13,8 @@
     <link href="../assets/css/social.examples.css" rel="stylesheet"/>
     <link href="../assets/css/font-awesome.css" rel="stylesheet"/>
     <link href="../assets/css/twitter-bootstrap/bootstrap-responsive.css" rel="stylesheet"/>
-    <link href="../assets/css/docs.css" rel="stylesheet">
+    <link href="../assets/js/bootstrap-fileupload/bootstrap-fileupload.min.css" rel="stylesheet"/>
+    <link href="../assets/css/docs.css" rel="stylesheet"/>
     <link href="../assets/js/jqvmap/jqvmap/jqvmap.css" rel="stylesheet"/>
     <style>
         #g1, #g2, #g3
