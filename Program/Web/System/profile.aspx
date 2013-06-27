@@ -64,7 +64,8 @@
                                     <div class="social-box">
                                         <div class="body">
                                             <h3>
-                                                Image upload widgets</h3>
+                                                上传头像
+                                            </h3>
                                             <div class="row-fluid">
                                                 <div class="span6">
                                                     <div class="fileupload fileupload-new" data-provides="fileupload">
