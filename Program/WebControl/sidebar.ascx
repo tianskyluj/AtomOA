@@ -4,7 +4,7 @@
         <div class="scrollable">
             <div>
                 <div class="user">
-                    <img class="avatar" width="25" height="25" src="../assets/img/avatar-30.png" alt="Julio Marquez">
+                    <img runat="server" id="avatar" class="avatar" width="25" height="25" src="../Upload/Avatar/DefaultAvatar.jpg" alt="Julio Marquez"/>
                     <span data-toggle="dropdown"><asp:Label ID="name" runat="server"></asp:Label></span>
                 </div>
                 <div class="navigation-sidebar">

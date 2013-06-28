@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using Maticsoft.Common;
 using ATOM.Model;
 using System.Web;
+using System.Text;
+using System.IO;
+
 namespace ATOM.BLL
 {
     /// <summary>
@@ -268,6 +271,25 @@ namespace ATOM.BLL
 
             }
             return obj;
+        }
+
+        /// <summary>
+        /// 获取用户头像
+        /// </summary>
+        /// <returns></returns>
+        public static string getUserAvatar()
+        {
+            string avatarString = "";
+            string fileUrl = inc.getApplicationPath() + "/Upload/Avatar/" + ATOM.BLL.SystemUser.getSessionSiteUser().Id.ToStr() + "_avatar.txt";
+            StreamReader sr;
+            if (File.Exists(HttpContext.Current.Server.MapPath(fileUrl)))
+            {
+                sr = File.OpenText(HttpContext.Current.Server.MapPath(fileUrl));
+                avatarString = sr.ReadLine();
+                sr.Close();
+                sr.Dispose();
+            }
+            return avatarString;
         }
 
         #endregion

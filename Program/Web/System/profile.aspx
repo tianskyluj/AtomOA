@@ -70,7 +70,7 @@
                                                 <div class="span6">
                                                     <div class="fileupload fileupload-new" data-provides="fileupload">
                                                         <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
-                                                            <img src="../assets/img/plugins/bootstrap-fileupload/no-image.png" alt="Selected image"/>
+                                                            <img runat="server" id="avatarNow" src="../assets/img/plugins/bootstrap-fileupload/no-image.png" alt="Selected image"/>
                                                         </div>
                                                         <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px;
                                                             max-height: 150px; line-height: 20px;">
@@ -79,9 +79,12 @@
                                                             <span class="btn btn-file">
                                                                 <span class="fileupload-new">选择图片</span>
                                                                 <span class="fileupload-exists">修改</span>
-                                                                <input type="file">
+                                                                <input id="selectFile"  type="file"/>
                                                             </span> 
                                                             <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">移除</a>
+                                                            <button id="UploadButton" class="btn btn-primary">
+                                                                上传图片
+                                                            </button>
                                                         </div>
                                                     </div>
                                                 </div>
