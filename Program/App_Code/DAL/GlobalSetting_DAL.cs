@@ -12,7 +12,22 @@ namespace ATOM.DAL
     {
         public GlobalSetting()
         { }
-        #region  Method
+        #region  BasicMethod
+        /// <summary>
+        /// 是否存在该记录
+        /// </summary>
+        public bool Exists(int Id)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select count(1) from GlobalSetting");
+            strSql.Append(" where Id=@Id");
+            SqlParameter[] parameters = {
+					new SqlParameter("@Id", SqlDbType.Int,4)
+			};
+            parameters[0].Value = Id;
+
+            return DbHelperSQL.Exists(strSql.ToString(), parameters);
+        }
 
 
         /// <summary>
@@ -22,13 +37,29 @@ namespace ATOM.DAL
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("insert into GlobalSetting(");
-            strSql.Append("CompanyName)");
+            strSql.Append("CompanyName,state,remark,createUser,createIp,createTime,updateUser,updateIp,updateTime)");
             strSql.Append(" values (");
-            strSql.Append("@CompanyName)");
+            strSql.Append("@CompanyName,@state,@remark,@createUser,@createIp,@createTime,@updateUser,@updateIp,@updateTime)");
             strSql.Append(";select @@IDENTITY");
             SqlParameter[] parameters = {
-					new SqlParameter("@CompanyName", SqlDbType.NVarChar,50)};
+					new SqlParameter("@CompanyName", SqlDbType.NVarChar,200),
+					new SqlParameter("@state", SqlDbType.Int,4),
+					new SqlParameter("@remark", SqlDbType.NVarChar,500),
+					new SqlParameter("@createUser", SqlDbType.Int,4),
+					new SqlParameter("@createIp", SqlDbType.NVarChar,50),
+					new SqlParameter("@createTime", SqlDbType.DateTime),
+					new SqlParameter("@updateUser", SqlDbType.Int,4),
+					new SqlParameter("@updateIp", SqlDbType.NVarChar,50),
+					new SqlParameter("@updateTime", SqlDbType.DateTime)};
             parameters[0].Value = model.CompanyName;
+            parameters[1].Value = model.state;
+            parameters[2].Value = model.remark;
+            parameters[3].Value = model.createUser;
+            parameters[4].Value = model.createIp;
+            parameters[5].Value = model.createTime;
+            parameters[6].Value = model.updateUser;
+            parameters[7].Value = model.updateIp;
+            parameters[8].Value = model.updateTime;
 
             object obj = DbHelperSQL.GetSingle(strSql.ToString(), parameters);
             if (obj == null)
@@ -47,13 +78,37 @@ namespace ATOM.DAL
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("update GlobalSetting set ");
-            strSql.Append("CompanyName=@CompanyName");
+            strSql.Append("CompanyName=@CompanyName,");
+            strSql.Append("state=@state,");
+            strSql.Append("remark=@remark,");
+            strSql.Append("createUser=@createUser,");
+            strSql.Append("createIp=@createIp,");
+            strSql.Append("createTime=@createTime,");
+            strSql.Append("updateUser=@updateUser,");
+            strSql.Append("updateIp=@updateIp,");
+            strSql.Append("updateTime=@updateTime");
             strSql.Append(" where Id=@Id");
             SqlParameter[] parameters = {
-					new SqlParameter("@CompanyName", SqlDbType.NVarChar,50),
+					new SqlParameter("@CompanyName", SqlDbType.NVarChar,200),
+					new SqlParameter("@state", SqlDbType.Int,4),
+					new SqlParameter("@remark", SqlDbType.NVarChar,500),
+					new SqlParameter("@createUser", SqlDbType.Int,4),
+					new SqlParameter("@createIp", SqlDbType.NVarChar,50),
+					new SqlParameter("@createTime", SqlDbType.DateTime),
+					new SqlParameter("@updateUser", SqlDbType.Int,4),
+					new SqlParameter("@updateIp", SqlDbType.NVarChar,50),
+					new SqlParameter("@updateTime", SqlDbType.DateTime),
 					new SqlParameter("@Id", SqlDbType.Int,4)};
             parameters[0].Value = model.CompanyName;
-            parameters[1].Value = model.Id;
+            parameters[1].Value = model.state;
+            parameters[2].Value = model.remark;
+            parameters[3].Value = model.createUser;
+            parameters[4].Value = model.createIp;
+            parameters[5].Value = model.createTime;
+            parameters[6].Value = model.updateUser;
+            parameters[7].Value = model.updateIp;
+            parameters[8].Value = model.updateTime;
+            parameters[9].Value = model.Id;
 
             int rows = DbHelperSQL.ExecuteSql(strSql.ToString(), parameters);
             if (rows > 0)
@@ -117,7 +172,7 @@ namespace ATOM.DAL
         {
 
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select  top 1 Id,CompanyName from GlobalSetting ");
+            strSql.Append("select  top 1 Id,CompanyName,state,remark,createUser,createIp,createTime,updateUser,updateIp,updateTime from GlobalSetting ");
             strSql.Append(" where Id=@Id");
             SqlParameter[] parameters = {
 					new SqlParameter("@Id", SqlDbType.Int,4)
@@ -128,20 +183,65 @@ namespace ATOM.DAL
             DataSet ds = DbHelperSQL.Query(strSql.ToString(), parameters);
             if (ds.Tables[0].Rows.Count > 0)
             {
-                if (ds.Tables[0].Rows[0]["Id"] != null && ds.Tables[0].Rows[0]["Id"].ToString() != "")
-                {
-                    model.Id = int.Parse(ds.Tables[0].Rows[0]["Id"].ToString());
-                }
-                if (ds.Tables[0].Rows[0]["CompanyName"] != null && ds.Tables[0].Rows[0]["CompanyName"].ToString() != "")
-                {
-                    model.CompanyName = ds.Tables[0].Rows[0]["CompanyName"].ToString();
-                }
-                return model;
+                return DataRowToModel(ds.Tables[0].Rows[0]);
             }
             else
             {
                 return null;
             }
+        }
+
+
+        /// <summary>
+        /// 得到一个对象实体
+        /// </summary>
+        public ATOM.Model.GlobalSetting DataRowToModel(DataRow row)
+        {
+            ATOM.Model.GlobalSetting model = new ATOM.Model.GlobalSetting();
+            if (row != null)
+            {
+                if (row["Id"] != null && row["Id"].ToString() != "")
+                {
+                    model.Id = int.Parse(row["Id"].ToString());
+                }
+                if (row["CompanyName"] != null)
+                {
+                    model.CompanyName = row["CompanyName"].ToString();
+                }
+                if (row["state"] != null && row["state"].ToString() != "")
+                {
+                    model.state = int.Parse(row["state"].ToString());
+                }
+                if (row["remark"] != null)
+                {
+                    model.remark = row["remark"].ToString();
+                }
+                if (row["createUser"] != null && row["createUser"].ToString() != "")
+                {
+                    model.createUser = int.Parse(row["createUser"].ToString());
+                }
+                if (row["createIp"] != null)
+                {
+                    model.createIp = row["createIp"].ToString();
+                }
+                if (row["createTime"] != null && row["createTime"].ToString() != "")
+                {
+                    model.createTime = DateTime.Parse(row["createTime"].ToString());
+                }
+                if (row["updateUser"] != null && row["updateUser"].ToString() != "")
+                {
+                    model.updateUser = int.Parse(row["updateUser"].ToString());
+                }
+                if (row["updateIp"] != null)
+                {
+                    model.updateIp = row["updateIp"].ToString();
+                }
+                if (row["updateTime"] != null && row["updateTime"].ToString() != "")
+                {
+                    model.updateTime = DateTime.Parse(row["updateTime"].ToString());
+                }
+            }
+            return model;
         }
 
         /// <summary>
@@ -150,7 +250,7 @@ namespace ATOM.DAL
         public DataSet GetList(string strWhere)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select Id,CompanyName ");
+            strSql.Append("select Id,CompanyName,state,remark,createUser,createIp,createTime,updateUser,updateIp,updateTime ");
             strSql.Append(" FROM GlobalSetting ");
             if (strWhere.Trim() != "")
             {
@@ -170,7 +270,7 @@ namespace ATOM.DAL
             {
                 strSql.Append(" top " + Top.ToString());
             }
-            strSql.Append(" Id,CompanyName ");
+            strSql.Append(" Id,CompanyName,state,remark,createUser,createIp,createTime,updateUser,updateIp,updateTime ");
             strSql.Append(" FROM GlobalSetting ");
             if (strWhere.Trim() != "")
             {
@@ -252,6 +352,10 @@ namespace ATOM.DAL
             return DbHelperSQL.RunProcedure("UP_GetRecordByPage",parameters,"ds");
         }*/
 
-        #endregion  Method
+        #endregion  BasicMethod
+        #region  ExtensionMethod
+
+        #endregion  ExtensionMethod
     }
 }
+

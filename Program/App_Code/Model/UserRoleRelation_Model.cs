@@ -2,16 +2,17 @@
 namespace ATOM.Model
 {
     /// <summary>
-    /// GlobalSetting:实体类(属性说明自动提取数据库字段的描述信息)
+    /// UserRoleRelation:实体类(属性说明自动提取数据库字段的描述信息)
     /// </summary>
     [Serializable]
-    public partial class GlobalSetting
+    public partial class UserRoleRelation
     {
-        public GlobalSetting()
+        public UserRoleRelation()
         { }
         #region Model
         private int _id;
-        private string _companyname = "";
+        private int? _userid = 0;
+        private int? _roleid = 0;
         private int? _state = 0;
         private string _remark = "";
         private int? _createuser = 0;
@@ -31,10 +32,18 @@ namespace ATOM.Model
         /// <summary>
         /// 
         /// </summary>
-        public string CompanyName
+        public int? UserId
         {
-            set { _companyname = value; }
-            get { return _companyname; }
+            set { _userid = value; }
+            get { return _userid; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public int? RoleId
+        {
+            set { _roleid = value; }
+            get { return _roleid; }
         }
         /// <summary>
         /// 

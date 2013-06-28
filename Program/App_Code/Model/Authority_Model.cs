@@ -2,16 +2,16 @@
 namespace ATOM.Model
 {
     /// <summary>
-    /// GlobalSetting:实体类(属性说明自动提取数据库字段的描述信息)
+    /// Authority:实体类(属性说明自动提取数据库字段的描述信息)
     /// </summary>
     [Serializable]
-    public partial class GlobalSetting
+    public partial class Authority
     {
-        public GlobalSetting()
+        public Authority()
         { }
         #region Model
         private int _id;
-        private string _companyname = "";
+        private string _authorityname = "";
         private int? _state = 0;
         private string _remark = "";
         private int? _createuser = 0;
@@ -31,10 +31,10 @@ namespace ATOM.Model
         /// <summary>
         /// 
         /// </summary>
-        public string CompanyName
+        public string AuthorityName
         {
-            set { _companyname = value; }
-            get { return _companyname; }
+            set { _authorityname = value; }
+            get { return _authorityname; }
         }
         /// <summary>
         /// 
