@@ -12,16 +12,16 @@
         <lan:header runat="server" ID="header" />
         <div id="main">
             <div class="container-fluid" id="mainContent">
-                    <div class="row-fluid">
-                        <div class="span12">
-                            <h3 class="page-title">
-                                工作台
-                            </h3>
-                        </div>
+                <div class="row-fluid">
+                    <div class="span12">
+                        <h3 class="page-title">
+                            工作台
+                        </h3>
                     </div>
-                    <div class="row-fluid">
-                        <div class="span6">
-                            <section class="social-box">
+                </div>
+                <div class="row-fluid">
+                    <div class="span6">
+                        <section class="social-box">
                 <header class="header">
                     <h4><i class="icon-bar-chart"></i> Visits by location</h4>
                     <div class="tools">
@@ -31,9 +31,9 @@
                 <div id="demo-plot" class="plot"></div>
                 </div>
                 </section>
-                        </div>
-                        <div class="span6">
-                            <section class="social-box">
+                    </div>
+                    <div class="span6">
+                        <section class="social-box">
                     <div class="header">
                         <h4><i class="icon-bar-chart"></i> Server Stats</h4>
                     </div>
@@ -43,11 +43,11 @@
                         <div id="g3"></div>
                     </div>
                 </section>
-                        </div>
                     </div>
-                    <div class="row-fluid">
-                        <div class="span6">
-                            <section class="social-box">
+                </div>
+                <div class="row-fluid">
+                    <div class="span6">
+                        <section class="social-box">
                 <div class="header">
                     <h4><i class="icon-calendar"></i> Calendar</h4>
                 </div>
@@ -55,8 +55,8 @@
                     <div id="demo-calendar1" class="social-box-calendar"></div>
                 </div>
                 </section>
-                        </div>
                     </div>
+                </div>
             </div>
             <lan:footer runat="server" ID="footer" />
         </div>
