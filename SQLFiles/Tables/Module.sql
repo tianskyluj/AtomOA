@@ -1,4 +1,4 @@
--- ģ���
+﻿-- 系统模块表
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Module]') AND type in (N'U'))
 DROP TABLE [dbo].[Module]
 
