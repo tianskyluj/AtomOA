@@ -107,23 +107,18 @@ namespace ATOM.BLL
         /// </summary>
         public List<ATOM.Model.GlobalSetting> DataTableToList(DataTable dt)
         {
-            List<ATOM.Model.GlobalSetting> modelList = new List<ATOM.Model.GlobalSetting>();
+            List<ATOM.Model.SystemUser> modelList = new List<ATOM.Model.SystemUser>();
             int rowsCount = dt.Rows.Count;
             if (rowsCount > 0)
             {
-                ATOM.Model.GlobalSetting model;
+                ATOM.Model.SystemUser model;
                 for (int n = 0; n < rowsCount; n++)
                 {
-                    model = new ATOM.Model.GlobalSetting();
-                    if (dt.Rows[n]["Id"] != null && dt.Rows[n]["Id"].ToString() != "")
+                    model = dal.DataRowToModel(dt.Rows[n]);
+                    if (model != null)
                     {
-                        model.Id = int.Parse(dt.Rows[n]["Id"].ToString());
+                        modelList.Add(model);
                     }
-                    if (dt.Rows[n]["CompanyName"] != null && dt.Rows[n]["CompanyName"].ToString() != "")
-                    {
-                        model.CompanyName = dt.Rows[n]["CompanyName"].ToString();
-                    }
-                    modelList.Add(model);
                 }
             }
             return modelList;
