@@ -16,7 +16,12 @@ CREATE TABLE [dbo].[SystemUser](
 	[Email] [nvarchar](200) NULL DEFAULT '',
 	[QQ] [nvarchar](200) NULL DEFAULT '',
 	[Avatar] [nvarchar](200) NULL DEFAULT '',
+	
 	[IfAdmin] [int] NULL DEFAULT ((0)),
+	[ProvinceId] [int] NULL DEFAULT ((0)),
+	[CityId] [int] NULL DEFAULT ((0)),
+	[AreaId] [int] NULL DEFAULT ((0)),
+	[DepartmentId] [int] NULL DEFAULT ((0)),
 	
 	[state] [int] NULL DEFAULT ((0)),
 	[remark] [nvarchar](500) NULL DEFAULT '',
