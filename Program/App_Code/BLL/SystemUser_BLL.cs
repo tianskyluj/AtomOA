@@ -118,76 +118,11 @@ namespace ATOM.BLL
                 ATOM.Model.SystemUser model;
                 for (int n = 0; n < rowsCount; n++)
                 {
-                    model = new ATOM.Model.SystemUser();
-                    if (dt.Rows[n]["Id"] != null && dt.Rows[n]["Id"].ToString() != "")
+                    model = dal.DataRowToModel(dt.Rows[n]);
+                    if (model != null)
                     {
-                        model.Id = int.Parse(dt.Rows[n]["Id"].ToString());
+                        modelList.Add(model);
                     }
-                    if (dt.Rows[n]["CompanyId"] != null && dt.Rows[n]["CompanyId"].ToString() != "")
-                    {
-                        model.CompanyId = int.Parse(dt.Rows[n]["CompanyId"].ToString());
-                    }
-                    if (dt.Rows[n]["UserName"] != null && dt.Rows[n]["UserName"].ToString() != "")
-                    {
-                        model.UserName = dt.Rows[n]["UserName"].ToString();
-                    }
-                    if (dt.Rows[n]["PassWord"] != null && dt.Rows[n]["PassWord"].ToString() != "")
-                    {
-                        model.PassWord = dt.Rows[n]["PassWord"].ToString();
-                    }
-                    if (dt.Rows[n]["Name"] != null && dt.Rows[n]["Name"].ToString() != "")
-                    {
-                        model.Name = dt.Rows[n]["Name"].ToString();
-                    }
-                    if (dt.Rows[n]["Phone"] != null && dt.Rows[n]["Phone"].ToString() != "")
-                    {
-                        model.Phone = dt.Rows[n]["Phone"].ToString();
-                    }
-                    if (dt.Rows[n]["Email"] != null && dt.Rows[n]["Email"].ToString() != "")
-                    {
-                        model.Email = dt.Rows[n]["Email"].ToString();
-                    }
-                    if (dt.Rows[n]["QQ"] != null && dt.Rows[n]["QQ"].ToString() != "")
-                    {
-                        model.QQ = dt.Rows[n]["QQ"].ToString();
-                    }
-                    if (dt.Rows[n]["Avatar"] != null && dt.Rows[n]["Avatar"].ToString() != "")
-                    {
-                        model.Avatar = dt.Rows[n]["Avatar"].ToString();
-                    }
-                    if (dt.Rows[n]["state"] != null && dt.Rows[n]["state"].ToString() != "")
-                    {
-                        model.state = int.Parse(dt.Rows[n]["state"].ToString());
-                    }
-                    if (dt.Rows[n]["remark"] != null && dt.Rows[n]["remark"].ToString() != "")
-                    {
-                        model.remark = dt.Rows[n]["remark"].ToString();
-                    }
-                    if (dt.Rows[n]["createUser"] != null && dt.Rows[n]["createUser"].ToString() != "")
-                    {
-                        model.createUser = int.Parse(dt.Rows[n]["createUser"].ToString());
-                    }
-                    if (dt.Rows[n]["createIp"] != null && dt.Rows[n]["createIp"].ToString() != "")
-                    {
-                        model.createIp = dt.Rows[n]["createIp"].ToString();
-                    }
-                    if (dt.Rows[n]["createTime"] != null && dt.Rows[n]["createTime"].ToString() != "")
-                    {
-                        model.createTime = DateTime.Parse(dt.Rows[n]["createTime"].ToString());
-                    }
-                    if (dt.Rows[n]["updateUser"] != null && dt.Rows[n]["updateUser"].ToString() != "")
-                    {
-                        model.updateUser = int.Parse(dt.Rows[n]["updateUser"].ToString());
-                    }
-                    if (dt.Rows[n]["updateIp"] != null && dt.Rows[n]["updateIp"].ToString() != "")
-                    {
-                        model.updateIp = dt.Rows[n]["updateIp"].ToString();
-                    }
-                    if (dt.Rows[n]["updateTime"] != null && dt.Rows[n]["updateTime"].ToString() != "")
-                    {
-                        model.updateTime = DateTime.Parse(dt.Rows[n]["updateTime"].ToString());
-                    }
-                    modelList.Add(model);
                 }
             }
             return modelList;

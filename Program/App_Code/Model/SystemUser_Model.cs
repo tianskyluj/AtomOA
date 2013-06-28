@@ -12,20 +12,25 @@ namespace ATOM.Model
         #region Model
         private int _id;
         private int? _companyid = 0;
-        private string _username;
-        private string _password;
-        private string _name;
-        private string _phone;
-        private string _email;
-        private string _qq;
-        private string _avatar;
+        private string _username = "";
+        private string _password = "";
+        private string _name = "";
+        private string _phone = "";
+        private string _email = "";
+        private string _qq = "";
+        private string _avatar = "";
+        private int? _ifadmin = 0;
+        private int? _provinceid = 0;
+        private int? _cityid = 0;
+        private int? _areaid = 0;
+        private int? _departmentid = 0;
         private int? _state = 0;
-        private string _remark;
+        private string _remark = "";
         private int? _createuser = 0;
-        private string _createip;
+        private string _createip = "";
         private DateTime? _createtime = DateTime.Now;
         private int? _updateuser = 0;
-        private string _updateip;
+        private string _updateip = "";
         private DateTime? _updatetime = DateTime.Now;
         /// <summary>
         /// 
@@ -98,6 +103,46 @@ namespace ATOM.Model
         {
             set { _avatar = value; }
             get { return _avatar; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public int? IfAdmin
+        {
+            set { _ifadmin = value; }
+            get { return _ifadmin; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public int? ProvinceId
+        {
+            set { _provinceid = value; }
+            get { return _provinceid; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public int? CityId
+        {
+            set { _cityid = value; }
+            get { return _cityid; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public int? AreaId
+        {
+            set { _areaid = value; }
+            get { return _areaid; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public int? DepartmentId
+        {
+            set { _departmentid = value; }
+            get { return _departmentid; }
         }
         /// <summary>
         /// 
