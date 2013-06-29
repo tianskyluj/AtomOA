@@ -16,6 +16,7 @@
     <link href="../assets/js/bootstrap-fileupload/bootstrap-fileupload.min.css" rel="stylesheet"/>
     <link href="../assets/css/docs.css" rel="stylesheet"/>
     <link href="../assets/js/jqvmap/jqvmap/jqvmap.css" rel="stylesheet"/>
+    <link href="../assets/js/datatables/media/DT_bootstrap.css" rel="stylesheet">
     <style>
         #g1, #g2, #g3
         {

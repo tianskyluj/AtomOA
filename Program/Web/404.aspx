@@ -8,9 +8,8 @@
 <body>
     <div class="wraper sidebar-full">
         <form id="form1" runat="server">
-        <lan:sidebar runat="server" ID="sidebar" />
-        <lan:header runat="server" ID="header" />
-        <div id="main">
+        <%--<lan:sidebar runat="server" ID="sidebar" />
+        <lan:header runat="server" ID="header" />--%>
             <div class="container-fluid" id="mainContent">
                 <div class="row-fluid">
                     <div class="error-404">
@@ -25,8 +24,7 @@
                         </form>
                     </div>
                 </div>
-            </div>
-            <lan:footer runat="server" ID="footer" />
+            <%--<lan:footer runat="server" ID="footer" />--%>
         </div>
         <lan:messageControls runat="server" ID="messageControls" />
         <lan:jsInclude runat="server" ID="jsInclude" />

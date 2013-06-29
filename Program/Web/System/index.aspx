@@ -19,10 +19,8 @@
             <div class="social-box">
                 <div class="body">
                     <ul id="myTab" class="nav nav-tabs">
-                        <li class="active"><a href="#home" data-toggle="tab"><i class="icon-home"></i>全局设置</a></li>
-                        <li class=""><a href="#profile" data-toggle="tab"><i class="icon-th"></i>模块</a></li>
-                        <li class=""><a href="#profile" data-toggle="tab"><i class="icon-group"></i>角色</a></li>
-                        <li class=""><a href="#profile" data-toggle="tab"><i class="icon-user"></i>用户</a></li>
+                        <li class="active"><a href="#home" data-toggle="tab"><i class="icon-globe"></i>全局设置</a></li>
+                        <li class=""><a href="#model" data-toggle="tab"><i class="icon-th"></i>模块</a></li>
                     </ul>
                     <div id="myTabContent" class="tab-content">
                         <div class="tab-pane fade active in" id="home">
@@ -30,7 +28,8 @@
                                 <div class="span12">
                                     <div class="body">
                                         <div class="control-group">
-                                            <label class="control-label">公司名称</label>
+                                            <label class="control-label">
+                                                公司名称</label>
                                             <div class="controls">
                                                 <asp:TextBox ID="companyName_edit" runat="server" CssClass="input-xlarge" placeholder="填写公司名称"></asp:TextBox>
                                             </div>
@@ -44,20 +43,15 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade " id="profile">
-                            <p>
-                                <strong>Profile</strong></p>
-                            <p>
-                                Fugiat, accusamus, odio consequatur facere tempore rem sed sequi facilis quae doloremque
-                                voluptates non delectus quaerat error deleniti nam placeat ratione quisquam. Lorem
-                                ipsum dolor sit amet, consectetur adipisicing elit. Vel, distinctio!</p>
+                       <div class="tab-pane fade " id="model">
+                           
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-     <div style="visibility:hidden">
+    <div style="visibility: hidden">
         <asp:TextBox runat="server" ID="globalSettingId"></asp:TextBox>
     </div>
     </form>

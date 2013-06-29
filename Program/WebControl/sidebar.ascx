@@ -17,7 +17,7 @@
                 <div class="accordion" id="accordion2">
                     <div class="accordion-group active">
                         <div class="accordion-heading">
-                            <a class="accordion-toggle opened" href="/Home/Index">
+                            <a class="accordion-toggle opened" href="../Web/index.aspx">
                                 <img src="../assets/img/icons/stuttgart-icon-pack/32x32/home.png" alt="工作台">
                                 <span>工作台</span><span class="badge">9</span> 
                             </a>
@@ -25,16 +25,17 @@
                     </div>
                     <div class="accordion-group ">
                         <div class="accordion-heading">
-                            <a class="accordion-toggle " data-toggle="collapse" data-parent="#accordion2" href="#collapse-ui-elements">
-                            <img src="../assets/img/icons/stuttgart-icon-pack/32x32/database.png" alt="UI Elements">
-                            <span>UI Elements </span><span class="arrow"></span> </a>
+                            <a class="accordion-toggle " data-toggle="collapse" data-parent="#accordion2" href="#basicSetting">
+                            <img src="../assets/img/icons/stuttgart-icon-pack/32x32/database.png" alt="基础设置">
+                            <span>基础设置</span><span class="arrow"></span> </a>
                         </div>
-                        <ul id="collapse-ui-elements" class="accordion-body collapse nav nav-list collapse ">
-                            <li><a href="ui-elements/general.html">General</a></li>
-                            <li><a href="ui-elements/buttons.html">Buttons</a></li>
-                            <li><a href="ui-elements/tabs-accordions.html">Tabs &amp; Accodions</a></li>
-                            <li><a href="ui-elements/typography.html">Typography</a></li><li><a href="ui-elements/icons.html">Icons</a>
-                            </li><li><a href="ui-elements/grid.html">Grid</a></li>
+                        <ul id="basicSetting" class="accordion-body collapse nav nav-list collapse ">
+                            <li><a href="javascript:redirect('System/Department.aspx')">部门</a></li>
+                            <li><a href="javascript:redirect('System/Role.aspx')">角色</a></li>
+                            <li><a href="javascript:redirect('System/User.aspx')">用户</a></li>
+                            <li><a href="javascript:redirect('System/Province.aspx')">省份</a></li>
+                            <li><a href="javascript:redirect('System/City.aspx')">地市</a></li>
+                            <li><a href="javascript:redirect('System/Area.aspx')">区县</a></li>
                         </ul> 
                     </div>
                 </div>
