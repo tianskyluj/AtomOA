@@ -19,8 +19,8 @@
     <script src="../assets/js/jquery-sparkline/jquery.sparkline.min.js"></script>
     <script src="../assets/js/justGage/resources/js/raphael.2.1.0.min.js"></script>
     <script src="../assets/js/justGage/resources/js/justgage.1.0.1.min.js"></script>
+    <script src="../assets/js/bootstrap-fileupload/bootstrap-fileupload.min.js"></script>
+    <script src="../assets/js/bootstrap-fileupload/bootstrap-fileupload.min.js"></script>
     <script src="../assets/js/inc.js"></script>
-    <script src="../assets/js/bootstrap-fileupload/bootstrap-fileupload.min.js"></script>
-    <script src="../assets/js/bootstrap-fileupload/bootstrap-fileupload.min.js"></script>
     <script src="../assets/js/datatables/media/js/jquery.dataTables.min.js"></script>
     

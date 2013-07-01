@@ -27,8 +27,10 @@
                         </a>
                     </div>
                     <div class="tools">
-                        <button class="btn btn-success" data-toggle="collapse" data-target="#advanced-search">
-                            <i class="icon-filter"></i>高级查询</button>
+                        <button class="btn btn-success btn-advanced" onclick="return false" data-toggle="collapse" data-target="#advanced-search">
+                            <i class="icon-filter"></i>高级查询
+                        </button>
+                        
                         <div class="btn-group">
                             <button class="btn dropdown-toggle" data-toggle="dropdown">
                                 <i class="icon-cog"></i>
