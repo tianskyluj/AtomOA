@@ -30,12 +30,12 @@
                             <span>基础设置</span><span class="arrow"></span> </a>
                         </div>
                         <ul id="basicSetting" class="accordion-body collapse nav nav-list collapse ">
-                            <li><a href="javascript:redirect('System/Department.aspx')">部门</a></li>
-                            <li><a href="javascript:redirect('System/Role.aspx')">角色</a></li>
-                            <li><a href="javascript:redirect('System/User.aspx')">用户</a></li>
-                            <li><a href="javascript:redirect('System/Province.aspx')">省份</a></li>
-                            <li><a href="javascript:redirect('System/City.aspx')">地市</a></li>
-                            <li><a href="javascript:redirect('System/Area.aspx')">区县</a></li>
+                            <li><a href="javascript:redirect('BasicSetting/Department.aspx')">部门</a></li>
+                            <li><a href="javascript:redirect('BasicSetting/Role.aspx')">角色</a></li>
+                            <li><a href="javascript:redirect('BasicSetting/User.aspx')">用户</a></li>
+                            <li><a href="javascript:redirect('BasicSetting/Province.aspx')">省份</a></li>
+                            <li><a href="javascript:redirect('BasicSetting/City.aspx')">地市</a></li>
+                            <li><a href="javascript:redirect('BasicSetting/Area.aspx')">区县</a></li>
                         </ul> 
                     </div>
                 </div>

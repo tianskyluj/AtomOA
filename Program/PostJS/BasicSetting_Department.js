@@ -170,4 +170,76 @@ function fnGetSelected(oTableLocal) {
     return oTableLocal.$('tr.info');
 }
 
+$(document).ready(function () {
+    var oTable;
 
+
+    /* Add a click handler to the rows - this could be used as a callback */
+    $("#example tbody").on('click', 'tr', function (e) {
+        if ($(this).hasClass('info')) {
+            $(this).removeClass('info').removeClass('text-success');
+            $("#delete-row").addClass("disabled");
+        }
+        else {
+            oTable.$('tr.info').removeClass('info');
+            $(this).addClass('info').addClass('text-success');
+            $("#delete-row").removeClass("disabled");
+        }
+    });
+
+    /* Add a click handler for the delete row */
+    $('#delete-row').click(function () {
+        var anSelected = fnGetSelected(oTable);
+        if (anSelected.length !== 0) {
+            oTable.fnDeleteRow(anSelected[0]);
+            $(this).addClass("disabled");
+        }
+    });
+
+    /* Init the table */
+    oTable = $('#example').dataTable({
+        "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
+        "sPaginationType": "bootstrap",
+        "oLanguage": {
+            "sLengthMenu": "_MENU_ 条记录/页"
+        },
+        "aaSorting": [[1, "asc"]],
+        "aoColumnDefs": [
+	          { 'bSortable': false, 'aTargets': [0] }
+	       ]
+    });
+
+    var giCount = 1;
+    $("#add-row").click(function () {
+        oTable.fnAddData([
+			"<input type=\"checkbox\" id=\"newInlineCheckbox\"" + giCount + "\" value=\"option2\">",
+			giCount + ".1",
+			giCount + ".2",
+			giCount + ".3",
+			giCount + ".4",
+			giCount + ".5"]);
+        giCount++;
+    });
+
+
+    $("#global_filter").keyup(fnFilterGlobal);
+    $("#global_regex").click(fnFilterGlobal);
+    $("#global_smart").click(fnFilterGlobal);
+
+    $("#col1_filter").keyup(function () { fnFilterColumn(0); });
+    $("#col1_regex").click(function () { fnFilterColumn(0); });
+    $("#col1_smart").click(function () { fnFilterColumn(0); });
+
+    $("#col2_filter").keyup(function () { fnFilterColumn(1); });
+    $("#col2_regex").click(function () { fnFilterColumn(1); });
+    $("#col2_smart").click(function () { fnFilterColumn(1); });
+
+    $('#toggle-checkboxes').click(function () {
+        var $checkbox = $("table").find(':checkbox');
+        if ($(this).attr('checked')) {
+            $checkbox.attr('checked', true);
+        } else {
+            $checkbox.attr('checked', false);
+        }
+    });
+});
