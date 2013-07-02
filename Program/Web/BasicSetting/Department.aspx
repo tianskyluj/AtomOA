@@ -20,17 +20,20 @@
                 <div class="header">
                     <div class="btn-group hidden-phone">
                         <a class="btn btn-primary" id="add-row" href="#">
-                            <i class="icon-pencil"></i>添加
+                            <i class="icon-plus"></i> 添加 
+                        </a>
+                        <a class="btn btn-success disabled" id="modify-row" href="#">
+                            <i class="icon-pencil"></i> 修改 
                         </a>
                         <a class="btn btn-danger disabled" href="#" id="delete-row">
-                            <i class="icon-trash"></i>删除
+                            <i class="icon-trash"></i> 删除 
                         </a>
                     </div>
                     <div class="tools">
-                        <button class="btn btn-success btn-advanced" onclick="return false" data-toggle="collapse" data-target="#advanced-search">
+                        <a class="btn btn-success btn-advanced" id="btn-advanced" href="javascript:void(0)"
+                            data-toggle="collapse" data-target="#advanced-search">
                             <i class="icon-filter"></i>高级查询
-                        </button>
-                        
+                        </a>
                         <div class="btn-group">
                             <button class="btn dropdown-toggle" data-toggle="dropdown">
                                 <i class="icon-cog"></i>
@@ -45,48 +48,12 @@
                     </div>
                 </div>
                 <div class="body">
-                    <div id="advanced-search" class="collapse">
-                        <table cellpadding="0" cellspacing="0" border="0" class="table table-hover table-condensed well">
-                            <tbody>
-                                
-                                <tr id="filter_col1">
-                                    <td align="center">
-                                        Rendering engine
-                                    </td>
-                                    <td align="center">
-                                        <input type="text" name="col1_filter" id="col1_filter"/>
-                                    </td>
-                                    <td align="center">
-                                        <input type="checkbox" name="col1_regex" id="col1_regex"/>
-                                    </td>
-                                    <td align="center">
-                                        <input type="checkbox" name="col1_smart" id="col1_smart" checked="checked"/>
-                                    </td>
-                                </tr>
-                                <tr id="filter_col2">
-                                    <td align="center">
-                                        Browser
-                                    </td>
-                                    <td align="center">
-                                        <input type="text" name="col2_filter" id="col2_filter"/>
-                                    </td>
-                                    <td align="center">
-                                        <input type="checkbox" name="col2_regex" id="col2_regex"/>
-                                    </td>
-                                    <td align="center">
-                                        <input type="checkbox" name="col2_smart" id="col2_smart" checked="checked"/>
-                                    </td>
-                                </tr>
-                                 
-                            </tbody>
-                        </table>
-                    </div>
                     <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered"
                         id="example">
                         <thead>
                             <tr>
                                 <th>
-                                    <input type="checkbox" id="toggle-checkboxes" value="option2"/>
+                                    <input type="checkbox" id="toggle-checkboxes" value="option2" />
                                 </th>
                                 <th>
                                     序号
@@ -104,10 +71,10 @@
                                 <ItemTemplate>
                                     <tr class="gradeX">
                                         <td>
-                                            <input type="checkbox" id="inlineCheckbox2" value="option2"/>
+                                            <input type="checkbox" id="inlineCheckbox2" value="option2" />
                                         </td>
                                         <td>
-                                            <%#DataBinder.Eval(Container.DataItem,"id")%>
+                                            <span id="dataId"><%#DataBinder.Eval(Container.DataItem,"id")%></span>
                                         </td>
                                         <td>
                                             <%#DataBinder.Eval(Container.DataItem,"departmentName")%>
@@ -123,6 +90,95 @@
                 </div>
             </div>
         </div>
+    </div>
+    <!-- 高级查询选项查询框 -->
+    <aside id="advanced_search" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3 id="myModalLabel">高级查询</h3>
+        </div>
+        <div class="modal-body">
+            <table cellpadding="0" cellspacing="0" border="0" class="table table-hover table-condensed well">
+                <thead>
+                    <tr>
+                        <th>
+                            列名
+                        </th>
+                        <th>
+                            查询关键字
+                        </th>
+                        <th>
+                            是否精确查询
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td align="center">
+                            部门名称
+                        </td>
+                        <td align="center">
+                            <asp:TextBox ID="department_search" runat="server"></asp:TextBox>
+                        </td>
+                        <td align="center">
+                            <input type="checkbox" id="department_check_search" checked="checked"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center">
+                            备注
+                        </td>
+                        <td align="center">
+                            <asp:TextBox ID="remark_search" runat="server"></asp:TextBox>
+                        </td>
+                        <td align="center">
+                            <input type="checkbox" id="remark_check_search" checked="checked"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-danger" data-dismiss="modal">关闭</button>
+            <a href="javascript:void(0);" class="btn btn-primary" id="confirmSearch">确定</a>
+        </div>
+    </aside>
+    <!-- 高级查询选项查询框 结束 -->
+    
+    <!-- 添加修改弹出框 -->
+    <aside id="addAndUpdate" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3 id="H1"><span id="addAndUpdateTitle">添加</span></h3>
+        </div>
+        <div class="modal-body">
+            <div class="control-group">
+                <label class="control-label">
+                    部门名称</label>
+                <div class="controls">
+                    <asp:TextBox ID="departmentName_edit" runat="server" CssClass="input-xlarge" placeholder="填写部门名称"></asp:TextBox>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">
+                    备注</label>
+                <div class="controls">
+                    <asp:TextBox ID="remark_edit" runat="server" TextMode="MultiLine" Rows="3" 
+                        CssClass="input-xlarge" placeholder="请填写备注">
+                    </asp:TextBox>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-danger" data-dismiss="modal">关闭</button>
+            <a class="btn btn-primary" id="confirmSave">确定</a>
+        </div>
+    </aside>
+    <!-- 添加修改弹出框 结束 -->
+    <div style="visibility:hidden">
+        <asp:TextBox ID="id" runat="server" Text="0"></asp:TextBox>
     </div>
     </form>
 </body>

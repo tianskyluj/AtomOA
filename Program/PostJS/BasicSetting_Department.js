@@ -170,6 +170,8 @@ function fnGetSelected(oTableLocal) {
     return oTableLocal.$('tr.info');
 }
 
+// 初始化列表
+
 $(document).ready(function () {
     var oTable;
 
@@ -179,20 +181,17 @@ $(document).ready(function () {
         if ($(this).hasClass('info')) {
             $(this).removeClass('info').removeClass('text-success');
             $("#delete-row").addClass("disabled");
+            $("#modify-row").addClass("disabled");
+            $('#id').val('0');
         }
         else {
             oTable.$('tr.info').removeClass('info');
             $(this).addClass('info').addClass('text-success');
-            $("#delete-row").removeClass("disabled");
-        }
-    });
-
-    /* Add a click handler for the delete row */
-    $('#delete-row').click(function () {
-        var anSelected = fnGetSelected(oTable);
-        if (anSelected.length !== 0) {
-            oTable.fnDeleteRow(anSelected[0]);
-            $(this).addClass("disabled");
+            if($(this).find('#dataId').html()!=undefined){
+                $("#delete-row").removeClass("disabled");
+                $("#modify-row").removeClass("disabled");
+                $('#id').val($(this).find('#dataId').html());
+            }
         }
     });
 
@@ -223,30 +222,7 @@ $(document).ready(function () {
 	       ]
     });
 
-    var giCount = 1;
-    $("#add-row").click(function () {
-        oTable.fnAddData([
-			"<input type=\"checkbox\" id=\"newInlineCheckbox\"" + giCount + "\" value=\"option2\">",
-			giCount + ".1",
-			giCount + ".2",
-			giCount + ".3",
-			giCount + ".4",
-			giCount + ".5"]);
-        giCount++;
-    });
-
-
-    $("#global_filter").keyup(fnFilterGlobal);
-    $("#global_regex").click(fnFilterGlobal);
-    $("#global_smart").click(fnFilterGlobal);
-
-    $("#col1_filter").keyup(function () { fnFilterColumn(0); });
-    $("#col1_regex").click(function () { fnFilterColumn(0); });
-    $("#col1_smart").click(function () { fnFilterColumn(0); });
-
-    $("#col2_filter").keyup(function () { fnFilterColumn(1); });
-    $("#col2_regex").click(function () { fnFilterColumn(1); });
-    $("#col2_smart").click(function () { fnFilterColumn(1); });
+    
 
     $('#toggle-checkboxes').click(function () {
         var $checkbox = $("table").find(':checkbox');
@@ -256,4 +232,172 @@ $(document).ready(function () {
             $checkbox.attr('checked', false);
         }
     });
+    /***********************************************************
+    *   高级查询
+    *************************************************************/
+    // 控制页面操作
+    
+    // 弹出高级查询表单
+    // 添加数据行
+    $('#btn-advanced').click(function(){
+        $('#advanced_search').modal('show');
+    });
+    
+    // 高级查询
+     $('#confirmSearch').click(function () {
+        $('#advanced_search').modal('hide');
+        $('#mainContent').load(
+            '../Web/BasicSetting/Department.aspx',                              // 这里修改服务器提交位置
+            {
+                "departmentName":$('#department_search').val(),                 // 这里修改查询提交参数
+                "remark":$('#remark_search').val()
+            }
+        );
+    });
+    
+    /***********************************************************
+    *   添加数据
+    *************************************************************/
+    
+    // 弹出添加数据行表单
+    $('#add-row').click(function(){
+        $('#addAndUpdateTitle').html('添加');
+        $('#addAndUpdate').modal('show');
+        clearForm();
+    });
+    
+    // 确定添加修改数据行
+    $('#confirmSave').click(function(){
+        update();
+    });
+    
+    /***********************************************************
+    *   修改数据
+    *************************************************************/
+    
+    // 弹出添加数据行表单
+    $('#modify-row').click(function(){
+        if($("#modify-row").hasClass("disabled")) {
+            return false;
+        }
+        else {
+            $('#addAndUpdateTitle').html('修改');
+            getModelValue();
+            $('#addAndUpdate').modal('show');
+        }
+    });
+    
+    /***********************************************************
+    *   删除数据
+    *************************************************************/
+     /* Add a click handler for the delete row */
+    $('#delete-row').click(function () {
+        if($("#delete-row").hasClass("disabled")) {
+            return false;
+        }
+        else {
+            var anSelected = fnGetSelected(oTable);
+            if (anSelected.length !== 0) {
+                oTable.fnDeleteRow(anSelected[0]);
+                $(this).addClass("disabled");
+                $("#modify-row").addClass("disabled");
+            }
+            deleteModel();
+        }
+    });
 });
+
+/***********************************************************
+*   自定义函数
+*************************************************************/
+
+// 初始化表单
+function clearForm(){                                                              // 这里修改初始化表单
+    $('#id').val('0');
+    $('#departmentName_edit').val('');
+    $('#remark_edit').val('');
+}
+
+// 添加或或修改数据行函数
+function update() {
+    if($('#departmentName_edit').val().trim().length==0)                            // 这里修改控制判断语句
+    {
+        showError("请填写部门名称");
+        return false;
+    }
+    
+    var data = '{'                                                                  // 这里修改取数位置
+                + ' id: "' + $('#id').val() + '"'
+                + ',departmentName: "' + $('#departmentName_edit').val() + '"'
+                + ',remark:"' + $('#remark_edit').val() + '" '
+                + '}'; 
+    $.ajax({
+        type: "POST",
+        url: "../Web/BasicSetting/Department.aspx/update",                          // 这里要修改服务器提交位置
+        data: data,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (json) {
+            if (json.d == "1") {
+                $('#addAndUpdate').modal('hide');
+                $('#mainContent').load('../Web/BasicSetting/Department.aspx');      // 这里要修改服务器提交位置
+                showSuccess("操作成功");
+            }
+            else showError("操作出错:" + json.d);
+        },
+        error: function (error) {
+            alert("调用出错" + error.responseText);
+        }
+    });
+}
+
+// 修改的记录赋值
+
+function getModelValue()
+{
+    var data = '{'
+                + ' id: "' + $('#id').val() + '"'
+                + '}'; 
+    $.ajax({
+        type: "POST",
+        url: "../Web/BasicSetting/Department.aspx/getModelValue",       // 这里要修改服务器提交位置
+        data: data,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data) {
+             data = jQuery.parseJSON(data.d);
+                $.each(data, function (i, item) {
+                    $('#departmentName_edit').val(item.DepartmentName); // 这里要修改赋值,注意DepartmentName 首字母大写
+                    $('#remark_edit').val(item.Remark);
+                })
+        },
+        error: function (error) {
+            alert("调用出错" + error.responseText);
+        }
+    });
+}
+
+
+// 删除记录
+function deleteModel(){
+    var data = '{'
+                + ' id: "' + $('#id').val() + '"'
+                + '}'; 
+    $.ajax({
+        type: "POST",
+        url: "../Web/BasicSetting/Department.aspx/deleteModel",       // 这里要修改服务器提交位置
+        data: data,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (json) {
+             if (json.d == "1") {
+                showSuccess("操作成功");
+            }
+            else showError("操作出错:" + json.d);
+        },
+        error: function (error) {
+            alert("调用出错" + error.responseText);
+        }
+    });
+}
+

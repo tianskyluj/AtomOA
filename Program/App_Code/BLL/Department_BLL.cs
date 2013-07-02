@@ -163,7 +163,25 @@ namespace ATOM.BLL
 
         #endregion  BasicMethod
         #region  ExtensionMethod
-
+        /// <summary>
+        /// 更新或者添加数据
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public bool AddUpdate(ATOM.Model.Department model)
+        {
+            if (model.Id == 0)
+            {
+                if (this.Add(model) > 0)
+                    return true;
+                else
+                    return false;
+            }
+            else
+            {
+                return this.Update(model);
+            }
+        }
         #endregion  ExtensionMethod
     }
 }
