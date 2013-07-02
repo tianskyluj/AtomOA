@@ -1,17 +1,17 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="messageControls.ascx.cs" Inherits="WebControl_Message" %>
 <!-- 用户确认框 -->
 <aside id="confirm" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-<div class="modal-header">
-<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-<h3 id="myModalLabel">Modal Heading</h3>
-</div>
-<div class="modal-body">
-One fine body…
-</div>
-<div class="modal-footer">
-<button class="btn btn-danger" data-dismiss="modal">Close</button>
-<button class="btn btn-primary">Save changes</button>
-</div>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3 id="myModalLabel">Modal Heading</h3>
+    </div>
+    <div class="modal-body">
+        One fine body…
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button class="btn btn-primary">Save changes</button>
+    </div>
 </aside>
 
 <!-- 成功提示 -->
