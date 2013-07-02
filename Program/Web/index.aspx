@@ -11,7 +11,7 @@
         <lan:sidebar runat="server" ID="sidebar" />
         <lan:header runat="server" ID="header" />
         <div id="main">
-            <div class="container-fluid" id="mainContent">
+            <div class="container-fluid" id="mainContent" style="min-height:800px">
                 <div class="row-fluid">
                     <div class="span12">
                         <h3 class="page-title">
