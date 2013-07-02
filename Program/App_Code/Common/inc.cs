@@ -834,6 +834,19 @@ public class inc
         }
         return _value;
     }
+
+    /// <summary>
+    /// 获取post提交的form参数
+    /// </summary>
+    /// <param name="_name"></param>
+    /// <returns></returns>
+    public static string getFormPar(string _name)
+    {
+        string _value = "";
+        if (HttpContext.Current.Request.Form[_name] != null)
+            _value = HttpContext.Current.Request.Form[_name];
+        return _value;
+    }
     //_______________________________________________________________________
 
 
