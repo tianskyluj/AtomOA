@@ -122,7 +122,7 @@
                             <asp:TextBox ID="department_search" runat="server"></asp:TextBox>
                         </td>
                         <td align="center">
-                            <input type="checkbox" id="department_check_search" checked="checked"/>
+                            <asp:CheckBox ID="department_check_search" runat="server" Checked="false" />
                         </td>
                     </tr>
                     <tr>
@@ -133,7 +133,7 @@
                             <asp:TextBox ID="remark_search" runat="server"></asp:TextBox>
                         </td>
                         <td align="center">
-                            <input type="checkbox" id="remark_check_search" checked="checked"/>
+                            <asp:CheckBox ID="remark_check_search" runat="server" Checked="false" />
                         </td>
                     </tr>
                 </tbody>

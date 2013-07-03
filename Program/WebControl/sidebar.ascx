@@ -18,7 +18,7 @@
                     <div class="accordion-group active">
                         <div class="accordion-heading">
                             <a class="accordion-toggle opened" href="../Web/index.aspx">
-                                <img src="../assets/img/icons/stuttgart-icon-pack/32x32/home.png" alt="工作台">
+                                <img src="../assets/img/icons/stuttgart-icon-pack/32x32/home.png" alt="工作台"/>
                                 <span>工作台</span><span class="badge">9</span> 
                             </a>
                         </div>
@@ -30,7 +30,7 @@
                             <span>基础设置</span><span class="arrow"></span> </a>
                         </div>
                         <ul id="basicSetting" class="accordion-body collapse nav nav-list collapse ">
-                            <li><a href="javascript:redirect('BasicSetting/Department.aspx')">部门</a></li>
+                            <li class="active"><a href="javascript:redirect('BasicSetting/Department.aspx')">部门</a></li>
                             <li><a href="javascript:redirect('BasicSetting/Role.aspx')">角色</a></li>
                             <li><a href="javascript:redirect('BasicSetting/User.aspx')">用户</a></li>
                             <li><a href="javascript:redirect('BasicSetting/Province.aspx')">省份</a></li>

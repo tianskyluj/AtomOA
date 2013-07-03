@@ -187,7 +187,7 @@ $(document).ready(function () {
         else {
             oTable.$('tr.info').removeClass('info');
             $(this).addClass('info').addClass('text-success');
-            if($(this).find('#dataId').html()!=undefined){
+            if ($(this).find('#dataId').html() != undefined) {
                 $("#delete-row").removeClass("disabled");
                 $("#modify-row").removeClass("disabled");
                 $('#id').val($(this).find('#dataId').html());
@@ -200,20 +200,20 @@ $(document).ready(function () {
         "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
         "sPaginationType": "bootstrap",
         "oLanguage": {
-            "sProcessing":   "处理中...",
-            "sLengthMenu":   "显示 _MENU_ 项结果",
-            "sZeroRecords":  "没有匹配结果",
-            "sInfo":         "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
-            "sInfoEmpty":    "显示第 0 至 0 项结果，共 0 项",
+            "sProcessing": "处理中...",
+            "sLengthMenu": "显示 _MENU_ 项结果",
+            "sZeroRecords": "没有匹配结果",
+            "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+            "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
             "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
-            "sInfoPostFix":  "",
-            "sSearch":       "搜索:",
-            "sUrl":          "",
+            "sInfoPostFix": "",
+            "sSearch": "搜索:",
+            "sUrl": "",
             "oPaginate": {
-                "sFirst":    "首页",
+                "sFirst": "首页",
                 "sPrevious": "上页",
-                "sNext":     "下页",
-                "sLast":     "末页"
+                "sNext": "下页",
+                "sLast": "末页"
             }
         },
         "aaSorting": [[1, "asc"]],
@@ -222,7 +222,7 @@ $(document).ready(function () {
 	       ]
     });
 
-    
+
 
     $('#toggle-checkboxes').click(function () {
         var $checkbox = $("table").find(':checkbox');
@@ -236,48 +236,50 @@ $(document).ready(function () {
     *   高级查询
     *************************************************************/
     // 控制页面操作
-    
+
     // 弹出高级查询表单
     // 添加数据行
-    $('#btn-advanced').click(function(){
+    $('#btn-advanced').click(function () {
         $('#advanced_search').modal('show');
     });
-    
+
     // 高级查询
-     $('#confirmSearch').click(function () {
+    $('#confirmSearch').click(function () {
         $('#advanced_search').modal('hide');
         $('#mainContent').load(
             '../Web/BasicSetting/Department.aspx',                              // 这里修改服务器提交位置
             {
-                "departmentName":$('#department_search').val(),                 // 这里修改查询提交参数
-                "remark":$('#remark_search').val()
-            }
+            "departmentName": $('#department_search').val(),                 // 这里修改查询提交参数
+            "departmentNameIfAccurate": $('#department_check_search').is(":checked"),
+            "remark": $('#remark_search').val(),
+            "remarkIfAccurate": $('#remark_check_search').is(":checked")
+        }
         );
     });
-    
+
     /***********************************************************
     *   添加数据
     *************************************************************/
-    
+
     // 弹出添加数据行表单
-    $('#add-row').click(function(){
+    $('#add-row').click(function () {
         $('#addAndUpdateTitle').html('添加');
         $('#addAndUpdate').modal('show');
         clearForm();
     });
-    
+
     // 确定添加修改数据行
-    $('#confirmSave').click(function(){
+    $('#confirmSave').click(function () {
         update();
     });
-    
+
     /***********************************************************
     *   修改数据
     *************************************************************/
-    
+
     // 弹出添加数据行表单
-    $('#modify-row').click(function(){
-        if($("#modify-row").hasClass("disabled")) {
+    $('#modify-row').click(function () {
+        if ($("#modify-row").hasClass("disabled")) {
             return false;
         }
         else {
@@ -286,13 +288,13 @@ $(document).ready(function () {
             $('#addAndUpdate').modal('show');
         }
     });
-    
+
     /***********************************************************
     *   删除数据
     *************************************************************/
-     /* Add a click handler for the delete row */
+    /* Add a click handler for the delete row */
     $('#delete-row').click(function () {
-        if($("#delete-row").hasClass("disabled")) {
+        if ($("#delete-row").hasClass("disabled")) {
             return false;
         }
         else {

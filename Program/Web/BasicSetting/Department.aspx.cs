@@ -22,6 +22,8 @@ public partial class Web_BasicSetting_Department : BasePage
     {
         this.department_search.Text = inc.getFormPar("departmentName").Trim();
         this.remark_search.Text = inc.getFormPar("remark").Trim();
+        this.department_check_search.Checked = inc.getFormPar("departmentNameIfAccurate") == "true" ? true : false;
+        this.remark_check_search.Checked = inc.getFormPar("remarkIfAccurate") == "true" ? true : false;
     }
 
     /// <summary>
@@ -43,10 +45,21 @@ public partial class Web_BasicSetting_Department : BasePage
         System.Text.StringBuilder where = new System.Text.StringBuilder("1=1");
 
         if (this.department_search.Text.Trim().Length != 0)
-            where.Append(" and DepartmentName like '%" + this.department_search.Text.Trim() + "%' ");
-        if (this.remark_search.Text.Trim().Length != 0)
-            where.Append(" and remark like '%"+this.remark_search.Text.Trim()+"%' ");
+        {
+            if (this.department_check_search.Checked)
+                where.Append(" and departmentName ='" + this.department_search.Text.Trim() + "' ");
+            else
+                where.Append(" and DepartmentName like '%" + this.department_search.Text.Trim() + "%' ");
+        }
 
+        if (this.remark_search.Text.Trim().Length != 0)
+        {
+            if (this.remark_check_search.Checked)
+                where.Append(" and remark = '" + this.remark_search.Text.Trim() + "' ");
+            else
+                where.Append(" and remark like '%" + this.remark_search.Text.Trim() + "%' ");
+        }
+            
         return where.ToStr();
     }
 
