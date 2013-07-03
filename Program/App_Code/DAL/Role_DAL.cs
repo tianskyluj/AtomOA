@@ -37,9 +37,9 @@ namespace ATOM.DAL
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("insert into Role(");
-            strSql.Append("RoleName,ProvinceId,CityId,AreaId,DepartmentId,state,remark,createUser,createIp,createTime,updateUser,updateIp,updateTime)");
+            strSql.Append("RoleName,ProvinceId,CityId,AreaId,DepartmentId,ProvinceIds,CityIds,AreaIds,DepartmentIds,state,remark,createUser,createIp,createTime,updateUser,updateIp,updateTime)");
             strSql.Append(" values (");
-            strSql.Append("@RoleName,@ProvinceId,@CityId,@AreaId,@DepartmentId,@state,@remark,@createUser,@createIp,@createTime,@updateUser,@updateIp,@updateTime)");
+            strSql.Append("@RoleName,@ProvinceId,@CityId,@AreaId,@DepartmentId,@ProvinceIds,@CityIds,@AreaIds,@DepartmentIds,@state,@remark,@createUser,@createIp,@createTime,@updateUser,@updateIp,@updateTime)");
             strSql.Append(";select @@IDENTITY");
             SqlParameter[] parameters = {
 					new SqlParameter("@RoleName", SqlDbType.NVarChar,200),
@@ -47,6 +47,10 @@ namespace ATOM.DAL
 					new SqlParameter("@CityId", SqlDbType.Int,4),
 					new SqlParameter("@AreaId", SqlDbType.Int,4),
 					new SqlParameter("@DepartmentId", SqlDbType.Int,4),
+					new SqlParameter("@ProvinceIds", SqlDbType.NVarChar,200),
+					new SqlParameter("@CityIds", SqlDbType.NVarChar,200),
+					new SqlParameter("@AreaIds", SqlDbType.NVarChar,200),
+					new SqlParameter("@DepartmentIds", SqlDbType.NVarChar,200),
 					new SqlParameter("@state", SqlDbType.Int,4),
 					new SqlParameter("@remark", SqlDbType.NVarChar,500),
 					new SqlParameter("@createUser", SqlDbType.Int,4),
@@ -60,14 +64,18 @@ namespace ATOM.DAL
             parameters[2].Value = model.CityId;
             parameters[3].Value = model.AreaId;
             parameters[4].Value = model.DepartmentId;
-            parameters[5].Value = model.state;
-            parameters[6].Value = model.remark;
-            parameters[7].Value = model.createUser;
-            parameters[8].Value = model.createIp;
-            parameters[9].Value = model.createTime;
-            parameters[10].Value = model.updateUser;
-            parameters[11].Value = model.updateIp;
-            parameters[12].Value = model.updateTime;
+            parameters[5].Value = model.ProvinceIds;
+            parameters[6].Value = model.CityIds;
+            parameters[7].Value = model.AreaIds;
+            parameters[8].Value = model.DepartmentIds;
+            parameters[9].Value = model.state;
+            parameters[10].Value = model.remark;
+            parameters[11].Value = model.createUser;
+            parameters[12].Value = model.createIp;
+            parameters[13].Value = model.createTime;
+            parameters[14].Value = model.updateUser;
+            parameters[15].Value = model.updateIp;
+            parameters[16].Value = model.updateTime;
 
             object obj = DbHelperSQL.GetSingle(strSql.ToString(), parameters);
             if (obj == null)
@@ -91,6 +99,10 @@ namespace ATOM.DAL
             strSql.Append("CityId=@CityId,");
             strSql.Append("AreaId=@AreaId,");
             strSql.Append("DepartmentId=@DepartmentId,");
+            strSql.Append("ProvinceIds=@ProvinceIds,");
+            strSql.Append("CityIds=@CityIds,");
+            strSql.Append("AreaIds=@AreaIds,");
+            strSql.Append("DepartmentIds=@DepartmentIds,");
             strSql.Append("state=@state,");
             strSql.Append("remark=@remark,");
             strSql.Append("createUser=@createUser,");
@@ -106,6 +118,10 @@ namespace ATOM.DAL
 					new SqlParameter("@CityId", SqlDbType.Int,4),
 					new SqlParameter("@AreaId", SqlDbType.Int,4),
 					new SqlParameter("@DepartmentId", SqlDbType.Int,4),
+					new SqlParameter("@ProvinceIds", SqlDbType.NVarChar,200),
+					new SqlParameter("@CityIds", SqlDbType.NVarChar,200),
+					new SqlParameter("@AreaIds", SqlDbType.NVarChar,200),
+					new SqlParameter("@DepartmentIds", SqlDbType.NVarChar,200),
 					new SqlParameter("@state", SqlDbType.Int,4),
 					new SqlParameter("@remark", SqlDbType.NVarChar,500),
 					new SqlParameter("@createUser", SqlDbType.Int,4),
@@ -120,15 +136,19 @@ namespace ATOM.DAL
             parameters[2].Value = model.CityId;
             parameters[3].Value = model.AreaId;
             parameters[4].Value = model.DepartmentId;
-            parameters[5].Value = model.state;
-            parameters[6].Value = model.remark;
-            parameters[7].Value = model.createUser;
-            parameters[8].Value = model.createIp;
-            parameters[9].Value = model.createTime;
-            parameters[10].Value = model.updateUser;
-            parameters[11].Value = model.updateIp;
-            parameters[12].Value = model.updateTime;
-            parameters[13].Value = model.Id;
+            parameters[5].Value = model.ProvinceIds;
+            parameters[6].Value = model.CityIds;
+            parameters[7].Value = model.AreaIds;
+            parameters[8].Value = model.DepartmentIds;
+            parameters[9].Value = model.state;
+            parameters[10].Value = model.remark;
+            parameters[11].Value = model.createUser;
+            parameters[12].Value = model.createIp;
+            parameters[13].Value = model.createTime;
+            parameters[14].Value = model.updateUser;
+            parameters[15].Value = model.updateIp;
+            parameters[16].Value = model.updateTime;
+            parameters[17].Value = model.Id;
 
             int rows = DbHelperSQL.ExecuteSql(strSql.ToString(), parameters);
             if (rows > 0)
@@ -192,7 +212,7 @@ namespace ATOM.DAL
         {
 
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select  top 1 Id,RoleName,ProvinceId,CityId,AreaId,DepartmentId,state,remark,createUser,createIp,createTime,updateUser,updateIp,updateTime from Role ");
+            strSql.Append("select  top 1 Id,RoleName,ProvinceId,CityId,AreaId,DepartmentId,ProvinceIds,CityIds,AreaIds,DepartmentIds,state,remark,createUser,createIp,createTime,updateUser,updateIp,updateTime from Role ");
             strSql.Append(" where Id=@Id");
             SqlParameter[] parameters = {
 					new SqlParameter("@Id", SqlDbType.Int,4)
@@ -244,6 +264,22 @@ namespace ATOM.DAL
                 {
                     model.DepartmentId = int.Parse(row["DepartmentId"].ToString());
                 }
+                if (row["ProvinceIds"] != null)
+                {
+                    model.ProvinceIds = row["ProvinceIds"].ToString();
+                }
+                if (row["CityIds"] != null)
+                {
+                    model.CityIds = row["CityIds"].ToString();
+                }
+                if (row["AreaIds"] != null)
+                {
+                    model.AreaIds = row["AreaIds"].ToString();
+                }
+                if (row["DepartmentIds"] != null)
+                {
+                    model.DepartmentIds = row["DepartmentIds"].ToString();
+                }
                 if (row["state"] != null && row["state"].ToString() != "")
                 {
                     model.state = int.Parse(row["state"].ToString());
@@ -286,7 +322,7 @@ namespace ATOM.DAL
         public DataSet GetList(string strWhere)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select Id,RoleName,ProvinceId,CityId,AreaId,DepartmentId,state,remark,createUser,createIp,createTime,updateUser,updateIp,updateTime ");
+            strSql.Append("select Id,RoleName,ProvinceId,CityId,AreaId,DepartmentId,ProvinceIds,CityIds,AreaIds,DepartmentIds,state,remark,createUser,createIp,createTime,updateUser,updateIp,updateTime ");
             strSql.Append(" FROM Role ");
             if (strWhere.Trim() != "")
             {
@@ -306,7 +342,7 @@ namespace ATOM.DAL
             {
                 strSql.Append(" top " + Top.ToString());
             }
-            strSql.Append(" Id,RoleName,ProvinceId,CityId,AreaId,DepartmentId,state,remark,createUser,createIp,createTime,updateUser,updateIp,updateTime ");
+            strSql.Append(" Id,RoleName,ProvinceId,CityId,AreaId,DepartmentId,ProvinceIds,CityIds,AreaIds,DepartmentIds,state,remark,createUser,createIp,createTime,updateUser,updateIp,updateTime ");
             strSql.Append(" FROM Role ");
             if (strWhere.Trim() != "")
             {
