@@ -26,11 +26,11 @@
                     <div class="accordion-group ">
                         <div class="accordion-heading">
                             <a class="accordion-toggle " data-toggle="collapse" data-parent="#accordion2" href="#basicSetting">
-                            <img src="../assets/img/icons/stuttgart-icon-pack/32x32/database.png" alt="基础设置">
+                            <img src="../assets/img/icons/stuttgart-icon-pack/32x32/database.png" alt="基础设置"/>
                             <span>基础设置</span><span class="arrow"></span> </a>
                         </div>
                         <ul id="basicSetting" class="accordion-body collapse nav nav-list collapse ">
-                            <li class="active"><a href="javascript:redirect('BasicSetting/Department.aspx')">部门</a></li>
+                            <li><a href="javascript:redirect('BasicSetting/Department.aspx')">部门</a></li>
                             <li><a href="javascript:redirect('BasicSetting/Role.aspx')">角色</a></li>
                             <li><a href="javascript:redirect('BasicSetting/User.aspx')">用户</a></li>
                             <li><a href="javascript:redirect('BasicSetting/Province.aspx')">省份</a></li>

@@ -173,7 +173,7 @@
         </div>
         <div class="modal-footer">
             <button class="btn btn-danger" data-dismiss="modal">关闭</button>
-            <a class="btn btn-primary" id="confirmSave">确定</a>
+            <a class="btn btn-primary" id="confirmSave">保存</a>
         </div>
     </aside>
     <!-- 添加修改弹出框 结束 -->
