@@ -145,26 +145,6 @@ if ($.fn.DataTable.TableTools) {
     });
 }
 
-
-/* Table initialisation */
-function fnFilterGlobal() {
-    $('#example').dataTable().fnFilter(
-        $("#global_filter").val(),
-        null,
-        $("#global_regex")[0].checked,
-        $("#global_smart")[0].checked
-    );
-}
-
-function fnFilterColumn(i) {
-    $('#example').dataTable().fnFilter(
-        $("#col" + (i + 1) + "_filter").val(),
-        i,
-        $("#col" + (i + 1) + "_regex")[0].checked,
-        $("#col" + (i + 1) + "_smart")[0].checked
-    );
-}
-
 /* Get the rows which are currently selected */
 function fnGetSelected(oTableLocal) {
     return oTableLocal.$('tr.info');
@@ -177,7 +157,7 @@ $(document).ready(function () {
 
 
     /* Add a click handler to the rows - this could be used as a callback */
-    $("#example tbody").on('click', 'tr', function (e) {
+    $("#listTable tbody").on('click', 'tr', function (e) {
         if ($(this).hasClass('info')) {
             $(this).removeClass('info').removeClass('text-success');
             $("#delete-row").addClass("disabled");
@@ -196,7 +176,7 @@ $(document).ready(function () {
     });
 
     /* Init the table */
-    oTable = $('#example').dataTable({
+    oTable = $('#listTable').dataTable({
         "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
         "sPaginationType": "bootstrap",
         "oLanguage": {
