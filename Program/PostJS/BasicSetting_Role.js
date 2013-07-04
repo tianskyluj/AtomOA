@@ -227,12 +227,10 @@ $(document).ready(function () {
     $('#confirmSearch').click(function () {
         $('#advanced_search').modal('hide');
         $('#mainContent').load(
-            '../Web/BasicSetting/Area.aspx',                              // 这里修改服务器提交位置
+            '../Web/BasicSetting/Province.aspx',                              // 这里修改服务器提交位置
             {
-            "areaName": $('#areaName_search').val(),                 // 这里修改查询提交参数
-            "areaNameIfAccurate": $('#areaName_check_search').is(":checked"),
-            "province":$('#province_search').val(),
-            "city":$('city_search').val(),
+            "provinceName": $('#provinceName_search').val(),                 // 这里修改查询提交参数
+            "provinceNameIfAccurate": $('#provinceName_check_search').is(":checked"),
             "remark": $('#remark_search').val(),
             "remarkIfAccurate": $('#remark_check_search').is(":checked")
         }
@@ -298,46 +296,32 @@ $(document).ready(function () {
 // 初始化表单
 function clearForm(){                                                              // 这里修改初始化表单
     $('#id').val('0');
-    $('#province_edit').val('0');
-    $('#city_edit').val('0');
-    $('#areaName_edit').val('');
+    $('#provinceName_edit').val('');
     $('#remark_edit').val('');
 }
 
 // 添加或或修改数据行函数
 function update() {
-    if($('#areaName_edit').val().trim().length==0)                            // 这里修改控制判断语句
+    if($('#provinceName_edit').val().trim().length==0)                            // 这里修改控制判断语句
     {
-        showError("请填写区域名称");
-        return false;
-    }
-    if($('#province_edit').val()==0)                            // 这里修改控制判断语句
-    {
-        showError("请选择省份");
-        return false;
-    }
-    if($('#city_edit').val()==0)                            // 这里修改控制判断语句
-    {
-        showError("请选择地市");
+        showError("请填写省份名称");
         return false;
     }
     var data = '{'                                                                  // 这里修改取数位置
                 + ' id: "' + $('#id').val() + '"'
-                + ',areaName: "' + $('#areaName_edit').val() + '"'
-                + ',province: "' + $('#province_edit').val() + '"'
-                + ',city: "' + $('#city_edit').val() + '"'
+                + ',provinceName: "' + $('#provinceName_edit').val() + '"'
                 + ',remark:"' + $('#remark_edit').val() + '" '
                 + '}'; 
     $.ajax({
         type: "POST",
-        url: "../Web/BasicSetting/Area.aspx/update",                          // 这里要修改服务器提交位置
+        url: "../Web/BasicSetting/Province.aspx/update",                          // 这里要修改服务器提交位置
         data: data,
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (json) {
             if (json.d == "1") {
                 $('#addAndUpdate').modal('hide');
-                $('#mainContent').load('../Web/BasicSetting/Area.aspx');      // 这里要修改服务器提交位置
+                $('#mainContent').load('../Web/BasicSetting/Province.aspx');      // 这里要修改服务器提交位置
                 showSuccess("操作成功");
             }
             else showError("操作出错:" + json.d);
@@ -357,16 +341,14 @@ function getModelValue()
                 + '}'; 
     $.ajax({
         type: "POST",
-        url: "../Web/BasicSetting/Area.aspx/getModelValue",       // 这里要修改服务器提交位置
+        url: "../Web/BasicSetting/Province.aspx/getModelValue",       // 这里要修改服务器提交位置
         data: data,
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
              data = jQuery.parseJSON(data.d);
                 $.each(data, function (i, item) {
-                    $('#areaName_edit').val(item.CityName); // 这里要修改赋值,注意DepartmentName 首字母大写
-                    $('#province_edit').val(item.ProvinceId);
-                    $('#city_edit').val(item.CityId);
+                    $('#provinceName_edit').val(item.ProvinceName); // 这里要修改赋值,注意DepartmentName 首字母大写
                     $('#remark_edit').val(item.Remark);
                 })
         },
@@ -384,7 +366,7 @@ function deleteModel(){
                 + '}'; 
     $.ajax({
         type: "POST",
-        url: "../Web/BasicSetting/Area.aspx/deleteModel",       // 这里要修改服务器提交位置
+        url: "../Web/BasicSetting/Province.aspx/deleteModel",       // 这里要修改服务器提交位置
         data: data,
         contentType: "application/json; charset=utf-8",
         dataType: "json",

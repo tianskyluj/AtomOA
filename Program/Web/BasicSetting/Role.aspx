@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Area.aspx.cs" Inherits="Web_BasicSetting_Area" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Role.aspx.cs" Inherits="Web_BasicSetting_Role" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -11,7 +11,7 @@
     <div class="row-fluid">
         <div class="span12">
             <h3 class="page-title">
-                区域管理
+                角色管理
             </h3>
         </div>
     </div>
@@ -60,13 +60,10 @@
                                     序号
                                 </th>
                                 <th>
-                                    区域
+                                    角色名称
                                 </th>
                                 <th>
-                                    所属地市
-                                </th>
-                                <th>
-                                    所属省份 
+                                    所属部门
                                 </th>
                                 <th>
                                     备注
@@ -84,13 +81,10 @@
                                             <span id="dataId"><%#DataBinder.Eval(Container.DataItem,"id")%></span>
                                         </td>
                                         <td>
-                                            <%#DataBinder.Eval(Container.DataItem,"areaName")%>
-                                        </td>
-                                        <td>
-                                            <%#DataBinder.Eval(Container.DataItem,"cityName")%>
-                                        </td>
-                                        <td>
                                             <%#DataBinder.Eval(Container.DataItem,"provinceName")%>
+                                        </td>
+                                        <td>
+                                            <%#DataBinder.Eval(Container.DataItem,"departmentName")%>
                                         </td>
                                         <td>
                                             <%#DataBinder.Eval(Container.DataItem,"remark")%>
@@ -115,29 +109,21 @@
             <table cellpadding="0" cellspacing="0" border="0" class="table table-hover table-condensed well">
                 <tr>
                     <td align="center">
-                        区域
+                        角色名称
                     </td>
                     <td align="center">
-                        <asp:TextBox ID="areaName_search" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="roleName_search" runat="server"></asp:TextBox>
                     </td>
                     <td align="center">
-                        <asp:CheckBox ID="areaName_check_search" runat="server" Checked="false" />
+                        <asp:CheckBox ID="roleName_check_search" runat="server" Checked="false" />
                     </td>
                 </tr>
-                <tr>
+                 <tr>
                     <td align="center">
-                        所属省份
+                        所属部门
                     </td>
                     <td align="center" colspan="2">
-                        <asp:DropDownList ID="province_search" runat="server"></asp:DropDownList>
-                    </td>
-                </tr>
-                <tr>
-                    <td align="center">
-                        所属地市
-                    </td>
-                    <td align="center" colspan="2">
-                        <asp:DropDownList ID="city_search" runat="server"></asp:DropDownList>
+                        <asp:DropDownList ID="department_search" runat="server"></asp:DropDownList>
                     </td>
                 </tr>
                 <tr>
@@ -170,23 +156,16 @@
         <div class="modal-body">
             <div class="control-group">
                 <label class="control-label">
-                    区域</label>
+                    省份</label>
                 <div class="controls">
-                    <asp:TextBox ID="areaName_edit" runat="server" CssClass="input-xlarge" placeholder="填写区域名称"></asp:TextBox>
+                    <asp:TextBox ID="provinceName_edit" runat="server" CssClass="input-xlarge" placeholder="填写省份名称"></asp:TextBox>
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label">
-                    所属省份</label>
+                    所属部门</label>
                 <div class="controls">
-                    <asp:DropDownList ID="province_edit" runat="server"></asp:DropDownList>
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label">
-                    所属地市</label>
-                <div class="controls">
-                    <asp:DropDownList ID="city_edit" runat="server"></asp:DropDownList>
+                    <asp:DropDownList ID="department_edit" runat="server"></asp:DropDownList>
                 </div>
             </div>
             <div class="control-group">
@@ -210,5 +189,5 @@
     </div>
     </form>
 </body>
-<script src="../PostJS/BasicSetting_Area.js"></script>
+<script src="../PostJS/BasicSetting_Role.js"></script>
 </html>
