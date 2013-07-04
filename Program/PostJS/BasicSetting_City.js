@@ -232,7 +232,8 @@ $(document).ready(function () {
             "cityName": $('#cityName_search').val(),                 // 这里修改查询提交参数
             "cityNameIfAccurate": $('#cityName_check_search').is(":checked"),
             "remark": $('#remark_search').val(),
-            "remarkIfAccurate": $('#remark_check_search').is(":checked")
+            "remarkIfAccurate": $('#remark_check_search').is(":checked"),
+            "province":$('#province_search').val()
         }
         );
     });
@@ -297,6 +298,7 @@ $(document).ready(function () {
 function clearForm(){                                                              // 这里修改初始化表单
     $('#id').val('0');
     $('#cityName_edit').val('');
+    $('#province_edit').val('0');
     $('#remark_edit').val('');
 }
 
@@ -307,9 +309,14 @@ function update() {
         showError("请填写地市名称");
         return false;
     }
+    if ($('#province_edit').val() == "0") {
+        showError("请选择省份");
+        return false;
+    }
     var data = '{'                                                                  // 这里修改取数位置
                 + ' id: "' + $('#id').val() + '"'
                 + ',cityName: "' + $('#cityName_edit').val() + '"'
+                + ',province: "' + $('#province_edit').val() + '"'
                 + ',remark:"' + $('#remark_edit').val() + '" '
                 + '}'; 
     $.ajax({
@@ -338,7 +345,7 @@ function getModelValue()
 {
     var data = '{'
                 + ' id: "' + $('#id').val() + '"'
-                + '}'; 
+                + '}';
     $.ajax({
         type: "POST",
         url: "../Web/BasicSetting/City.aspx/getModelValue",       // 这里要修改服务器提交位置
@@ -346,11 +353,12 @@ function getModelValue()
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
-             data = jQuery.parseJSON(data.d);
-                $.each(data, function (i, item) {
-                    $('#cityName_edit').val(item.CityName); // 这里要修改赋值,注意DepartmentName 首字母大写
-                    $('#remark_edit').val(item.Remark);
-                })
+            data = jQuery.parseJSON(data.d);
+            $.each(data, function (i, item) {
+                $('#cityName_edit').val(item.CityName); // 这里要修改赋值,注意DepartmentName 首字母大写
+                $('#province_edit').val(item.Province);
+                $('#remark_edit').val(item.Remark);
+            })
         },
         error: function (error) {
             alert("调用出错" + error.responseText);

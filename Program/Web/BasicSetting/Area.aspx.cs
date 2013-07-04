@@ -20,7 +20,7 @@ public partial class Web_BasicSetting_Area : BasePage
     /// </summary>
     protected void setSearchValue()
     {
-        this.areaName_edit.Text = inc.getFormPar("areaName").Trim();
+        this.areaName_search.Text = inc.getFormPar("areaName").Trim();
         this.remark_search.Text = inc.getFormPar("remark").Trim();
         this.areaName_check_search.Checked = inc.getFormPar("areaNameIfAccurate") == "true" ? true : false;
         this.remark_check_search.Checked = inc.getFormPar("remarkIfAccurate") == "true" ? true : false;

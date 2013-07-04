@@ -1,7 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="City.aspx.cs" Inherits="Web_BasicSetting_City" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <title></title>
@@ -20,21 +19,15 @@
             <div class="social-box">
                 <div class="header">
                     <div class="btn-group hidden-phone">
-                        <a class="btn btn-primary" id="add-row" href="#">
-                            <i class="icon-plus"></i> 添加 
-                        </a>
-                        <a class="btn btn-success disabled" id="modify-row" href="#">
-                            <i class="icon-pencil"></i> 修改 
-                        </a>
-                        <a class="btn btn-danger disabled" href="#" id="delete-row">
-                            <i class="icon-trash"></i> 删除 
-                        </a>
+                        <a class="btn btn-primary" id="add-row" href="#"><i class="icon-plus"></i>添加 </a>
+                        <a class="btn btn-success disabled" id="modify-row" href="#"><i class="icon-pencil">
+                        </i>修改 </a><a class="btn btn-danger disabled" href="#" id="delete-row"><i class="icon-trash">
+                        </i>删除 </a>
                     </div>
                     <div class="tools">
                         <a class="btn btn-success btn-advanced" id="btn-advanced" href="javascript:void(0)"
-                            data-toggle="collapse" data-target="#advanced-search">
-                            <i class="icon-filter"></i>高级查询
-                        </a>
+                            data-toggle="collapse" data-target="#advanced-search"><i class="icon-filter"></i>
+                            高级查询 </a>
                         <div class="btn-group">
                             <button class="btn dropdown-toggle" data-toggle="dropdown">
                                 <i class="icon-cog"></i>
@@ -63,6 +56,9 @@
                                     地市
                                 </th>
                                 <th>
+                                    所属省份
+                                </th>
+                                <th>
                                     备注
                                 </th>
                             </tr>
@@ -75,10 +71,14 @@
                                             <input type="checkbox" id="inlineCheckbox2" value="option2" />
                                         </td>
                                         <td>
-                                            <span id="dataId"><%#DataBinder.Eval(Container.DataItem,"id")%></span>
+                                            <span id="dataId">
+                                                <%#DataBinder.Eval(Container.DataItem,"id")%></span>
                                         </td>
                                         <td>
                                             <%#DataBinder.Eval(Container.DataItem,"cityName")%>
+                                        </td>
+                                         <td>
+                                            <%#DataBinder.Eval(Container.DataItem,"provinceName")%>
                                         </td>
                                         <td>
                                             <%#DataBinder.Eval(Container.DataItem,"remark")%>
@@ -101,20 +101,6 @@
         </div>
         <div class="modal-body">
             <table cellpadding="0" cellspacing="0" border="0" class="table table-hover table-condensed well">
-                <thead>
-                    <tr>
-                        <th>
-                            列名
-                        </th>
-                        <th>
-                            查询关键字
-                        </th>
-                        <th>
-                            是否精确查询
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
                     <tr>
                         <td align="center">
                             地市
@@ -123,7 +109,16 @@
                             <asp:TextBox ID="cityName_search" runat="server"></asp:TextBox>
                         </td>
                         <td align="center">
+                            是否精确查询
                             <asp:CheckBox ID="cityName_check_search" runat="server" Checked="false" />
+                        </td>
+                    </tr>
+                     <tr>
+                        <td align="center">
+                            所属省份
+                        </td>
+                        <td align="center" colspan="2">
+                            <asp:DropDownList ID="province_search" runat="server"></asp:DropDownList>
                         </td>
                     </tr>
                     <tr>
@@ -134,10 +129,10 @@
                             <asp:TextBox ID="remark_search" runat="server"></asp:TextBox>
                         </td>
                         <td align="center">
+                            是否精确查询
                             <asp:CheckBox ID="remark_check_search" runat="server" Checked="false" />
                         </td>
                     </tr>
-                </tbody>
             </table>
         </div>
         <div class="modal-footer">
@@ -146,7 +141,6 @@
         </div>
     </aside>
     <!-- 高级查询选项查询框 结束 -->
-    
     <!-- 添加修改弹出框 -->
     <aside id="addAndUpdate" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
         aria-hidden="true">
@@ -160,6 +154,13 @@
                     地市</label>
                 <div class="controls">
                     <asp:TextBox ID="cityName_edit" runat="server" CssClass="input-xlarge" placeholder="填写地市名称"></asp:TextBox>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">
+                    所属省份</label>
+                <div class="controls">
+                     <asp:DropDownList ID="province_edit" runat="server"></asp:DropDownList>
                 </div>
             </div>
             <div class="control-group">
@@ -178,7 +179,7 @@
         </div>
     </aside>
     <!-- 添加修改弹出框 结束 -->
-    <div style="visibility:hidden">
+    <div style="visibility: hidden">
         <asp:TextBox ID="id" runat="server" Text="0"></asp:TextBox>
     </div>
     </form>
