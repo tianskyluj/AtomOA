@@ -1,4 +1,15 @@
-﻿/* Set the defaults for DataTables initialisation */
+﻿
+  $(function() {
+    var options_elastic, tagit_options;
+    $(".chzn-select").chosen({
+      width: '95%'
+    });
+    $(".chzn-select-deselect").chosen({
+      allow_single_deselect: true
+    });
+});
+
+/* Set the defaults for DataTables initialisation */
 $.extend(true, $.fn.dataTable.defaults, {
     "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
     "sPaginationType": "bootstrap",
@@ -296,7 +307,8 @@ $(document).ready(function () {
 // 初始化表单
 function clearForm(){                                                              // 这里修改初始化表单
     $('#id').val('0');
-    $('#provinceName_edit').val('');
+    $('#province_edit').val('');
+    $('#department_edit').val('');
     $('#remark_edit').val('');
 }
 

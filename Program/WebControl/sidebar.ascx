@@ -36,6 +36,7 @@
                             <li><a href="javascript:redirect('BasicSetting/Province.aspx')">省份</a></li>
                             <li><a href="javascript:redirect('BasicSetting/City.aspx')">地市</a></li>
                             <li><a href="javascript:redirect('BasicSetting/Area.aspx')">区县</a></li>
+                            <li><a href="javascript:redirect('BasicSetting/elements.html')">demo</a></li>
                         </ul> 
                     </div>
                 </div>

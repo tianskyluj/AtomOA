@@ -11,9 +11,36 @@ public partial class Web_BasicSetting_Role : BasePage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        bindDropdownlist();
         // 赋值高级查询条件
         setSearchValue();
         bindGridView();
+    }
+
+    /// <summary>
+    /// 绑定下拉列表
+    /// </summary>
+    protected void bindDropdownlist()
+    {
+        DataTable dt = new ATOM.BLL.Department().GetAllList().Tables[0];
+        this.department_search.DataSource = dt;
+        this.department_search.DataValueField = "id";
+        this.department_search.DataTextField = "departmentName";
+        this.department_search.DataBind();
+        this.department_search.Items.Add(new ListItem("请选择部门", "0"));
+        this.department_search.SelectedValue = "0";
+
+        this.department_edit.DataSource = dt;
+        this.department_edit.DataValueField = "id";
+        this.department_edit.DataTextField = "departmentName";
+        this.department_edit.DataBind();
+
+        dt = new ATOM.BLL.Province().GetAllList().Tables[0];
+        this.province_edit.DataSource = dt;
+        this.province_edit.DataTextField = "provinceName";
+        this.province_edit.DataValueField = "id";
+        this.province_edit.DataBind();
+        //this.province_edit.SelectedValue = "1,2";
     }
 
     /// <summary>
@@ -21,10 +48,8 @@ public partial class Web_BasicSetting_Role : BasePage
     /// </summary>
     protected void setSearchValue()
     {
-        this.provinceName_search.Text = inc.getFormPar("provinceName").Trim();
         this.remark_search.Text = inc.getFormPar("remark").Trim();
         this.department_search.SelectedValue = inc.getFormPar("departmentId").Trim();
-        this.provinceName_check_search.Checked = inc.getFormPar("provinceNameIfAccurate") == "true" ? true : false;
         this.remark_check_search.Checked = inc.getFormPar("remarkIfAccurate") == "true" ? true : false;
     }
 
@@ -48,13 +73,6 @@ public partial class Web_BasicSetting_Role : BasePage
     {
         System.Text.StringBuilder where = new System.Text.StringBuilder("1=1");
 
-        if (this.provinceName_search.Text.Trim().Length != 0)
-        {
-            if (this.provinceName_check_search.Checked)
-                where.Append(" and provinceName ='" + this.provinceName_search.Text.Trim() + "' ");
-            else
-                where.Append(" and provinceName like '%" + this.provinceName_search.Text.Trim() + "%' ");
-        }
 
         if (this.remark_search.Text.Trim().Length != 0)
         {
@@ -87,7 +105,7 @@ public partial class Web_BasicSetting_Role : BasePage
         role_Model.DepartmentId = departmentId.ToInt();
         role_Model.remark = remark.Trim();
 
-        if (province_BLL.AddUpdate(province_Model))
+        if (role_BLL.AddUpdate(role_Model))
             return "1";
         else
             return "0";
