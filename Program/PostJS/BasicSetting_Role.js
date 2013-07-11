@@ -314,6 +314,8 @@ function clearForm(){                                                           
 
 // 添加或或修改数据行函数
 function update() {
+    var selectOptions = getMultiSelectValue('.province_edit');
+    alert(selectOptions);
     if($('#provinceName_edit').val().trim().length==0)                            // 这里修改控制判断语句
     {
         showError("请填写省份名称");
@@ -393,4 +395,6 @@ function deleteModel(){
         }
     });
 }
+
+
 

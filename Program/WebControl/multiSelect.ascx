@@ -24,6 +24,7 @@
         });
         
         setValue();
+         setCss();
     });
 
     function getValue() {
@@ -50,6 +51,12 @@
             });
         }
     }
+    
+    function setCss(){
+        var select = $("#<%= this.multiSelect.ClientID %>");
+        var cssText = $("#<%= this.lblclass.ClientID %>").html()
+        select.addClass(cssText);
+    }
 
 </script>
 <select id="multiSelect" class="multiSelect" multiple="true" runat="server">
@@ -60,3 +67,4 @@
 <asp:Label ID="ifAutoPostBack" runat="server" Text="0" Visible="false"></asp:Label>
 <asp:Label ID="oldText" runat="server" Text="" CssClass="hidden"></asp:Label>
 <asp:Label ID="selectedValue" runat="server"  CssClass="hidden"></asp:Label>
+<asp:Label ID="lblclass" runat="server"  CssClass="hidden"></asp:Label>

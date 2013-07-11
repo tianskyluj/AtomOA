@@ -155,16 +155,19 @@
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label">选择省份</label>
+                <label class="control-label">所属省份</label>
                 <div class="controls">
-                    <lan:multiSelect runat="server" ID="province_edit" DefaultText="请选择省份" DefaultValue="0"></lan:multiSelect>
+                    <lan:multiSelect runat="server" ID="province_edit" DefaultText="请选择省份" DefaultValue="0"
+                                     CssClass="province_edit">
+                    </lan:multiSelect>
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label">
                     所属部门</label>
                 <div class="controls">
-                     <lan:multiSelect runat="server" ID="department_edit" DefaultText="请选择部门" DefaultValue="0"></lan:multiSelect>
+                     <lan:multiSelect runat="server" ID="department_edit" DefaultText="请选择部门" DefaultValue="0">
+                     </lan:multiSelect>
                 </div>
             </div>
             <div class="control-group">

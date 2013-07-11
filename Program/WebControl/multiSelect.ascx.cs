@@ -58,6 +58,15 @@ public partial class WebControl_multiSelect : System.Web.UI.UserControl
     }
 
     /// <summary>
+    /// 获取或设置控件的class属性
+    /// </summary>
+    public string CssClass
+    {
+        get { return this.lblclass.Text; }
+        set { this.lblclass.Text = value; }
+    }
+
+    /// <summary>
     /// 获取或设置选定值
     /// </summary>
     public string SelectedValue
