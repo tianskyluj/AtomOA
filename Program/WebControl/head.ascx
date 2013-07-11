@@ -33,6 +33,17 @@
             margin-top: 40px;
         }
     </style>
+    <style>
+        /*mangoChat 在谷歌浏览器下不工作解决方案*/
+        .chat-dialog {
+        pointer-events:all;
+        }
+        .dialog-container {
+        pointer-events:none;
+        visibility:visible !important;
+        }
+    
+    </style>
     <script>
         ie = false;
     </script>

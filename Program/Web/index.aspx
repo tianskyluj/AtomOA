@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="index.aspx.cs" Inherits="web_index" %>
 
+<%@ Register Assembly="MangoChat" Namespace="ASPNETChatControl" TagPrefix="cc1" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -62,6 +64,9 @@
         </div>
         <lan:messageControls runat="server" ID="messageControls" />
         <lan:jsInclude runat="server" ID="jsInclude" />
+        <cc1:ChatControl ID="ChatControl1" runat="server" GroupsEnabled="false" LiteralsJsonFile="../assets/css/Literals-chn.json" 
+        HideOfflineUsers="true" DefaultChatDialogState="Minimized" MessageRememberCount="-1" >
+        </cc1:ChatControl>
         </form>
     </div>
 </body>

@@ -10,6 +10,7 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
+using ASPNETChatControl;
 
 public partial class webControl_header : System.Web.UI.UserControl
 {
@@ -27,6 +28,7 @@ public partial class webControl_header : System.Web.UI.UserControl
     /// <param name="e"></param>
     protected void loginOut_Click(object sender, EventArgs e)
     {
+        ChatControl.StopSession();
         Maticsoft.Common.DataSession.destroySession();
         Response.Redirect("login.aspx");
     }
