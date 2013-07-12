@@ -65,7 +65,7 @@
         <lan:messageControls runat="server" ID="messageControls" />
         <lan:jsInclude runat="server" ID="jsInclude" />
         <cc1:ChatControl ID="ChatControl1" runat="server" GroupsEnabled="false" LiteralsJsonFile="../assets/css/Literals-chn.json" 
-        HideOfflineUsers="true" DefaultChatDialogState="Minimized" MessageRememberCount="-1" >
+        HideOfflineUsers="true" DefaultContactsWindowState="Minimized" DefaultChatDialogState="Minimized" MessageRememberCount="-1" >
         </cc1:ChatControl>
         </form>
     </div>

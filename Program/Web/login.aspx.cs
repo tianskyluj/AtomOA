@@ -17,6 +17,10 @@ public partial class web_login : System.Web.UI.Page
                 Response.Redirect(inc.getApplicationPath() + "/web/index.aspx");
         }
         catch { }
+
+        this.title_login.Text = ATOM.BLL.GlobalSetting.GetCompanyName();
+        this.title.Text = this.title_login.Text + " - 登录";
+        
     }
 
     protected void login_Click(object sender, EventArgs e)

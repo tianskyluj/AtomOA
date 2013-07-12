@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta charset="utf-8">
-    <title>原子OA - 登录</title>
+    <title id="title" runat="server"></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -61,7 +61,7 @@
     <div class="container">
         <form class="form-login" id="formLogin" runat="server">
         <h2 class="form-heading">
-            原子OA管理系统</h2>
+            <asp:Label ID="title_login" runat="server"></asp:Label></h2>
         <input type="text" id="userName" runat="server" class="input-block-level" placeholder="用户名"/>
         <input type="password" id="passWord" runat="server" class="input-block-level" placeholder="密码"/>
         <div class="row-fluid">
