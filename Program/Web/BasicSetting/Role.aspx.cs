@@ -95,14 +95,14 @@ public partial class Web_BasicSetting_Role : BasePage
     /// <param name="modelId"></param>
     /// <returns></returns>
     [WebMethod]
-    public static string update(string id, string roleName,string departmentId, string remark)
+    public static string update(string id, string roleName, string provinceIds, string remark)
     {
         ATOM.BLL.Role role_BLL = new ATOM.BLL.Role();
         ATOM.Model.Role role_Model = new ATOM.Model.Role();
 
         role_Model.Id = id.ToInt();
         role_Model.RoleName = roleName.Trim();
-        role_Model.DepartmentId = departmentId.ToInt();
+        role_Model.ProvinceIds = provinceIds.Trim();
         role_Model.remark = remark.Trim();
 
         if (role_BLL.AddUpdate(role_Model))

@@ -16,6 +16,16 @@ function getMultiSelectValue (obj){
     return value;
 }
 
+// 初始化 多选下拉列表 所选都置空
+function initMultiSelect(obj) {
+    var select = $(obj); 
+
+    var inputs = select.parent().find('input');
+    inputs.eq(0).click();
+    inputs.eq(0).click();
+    return value;
+}
+
 $(document).ready(function () {
     // 点击无子页面链接
     $('.accordion-toggle').click(function () {

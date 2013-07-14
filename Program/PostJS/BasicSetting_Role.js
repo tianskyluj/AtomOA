@@ -307,35 +307,39 @@ $(document).ready(function () {
 // 初始化表单
 function clearForm(){                                                              // 这里修改初始化表单
     $('#id').val('0');
-    $('#province_edit').val('');
+    initMultiSelect('.province_edit');
     $('#department_edit').val('');
     $('#remark_edit').val('');
 }
 
 // 添加或或修改数据行函数
 function update() {
-    var selectOptions = getMultiSelectValue('.province_edit');
-    alert(selectOptions);
-    if($('#provinceName_edit').val().trim().length==0)                            // 这里修改控制判断语句
+    var provinceSelectOptions = getMultiSelectValue('.province_edit');
+    if ($('#roleName_edit').val().length == 0) {
+        showError("请填写角色名称");
+        return false;
+    }
+    if (provinceSelectOptions.length == 0)                            // 这里修改控制判断语句
     {
-        showError("请填写省份名称");
+        showError("请选择省份");
         return false;
     }
     var data = '{'                                                                  // 这里修改取数位置
                 + ' id: "' + $('#id').val() + '"'
-                + ',provinceName: "' + $('#provinceName_edit').val() + '"'
+                + ',roleName: "' + $('#roleName_edit').val() + '"'
+                + ',provinceIds: "' + provinceSelectOptions + '"'
                 + ',remark:"' + $('#remark_edit').val() + '" '
                 + '}'; 
     $.ajax({
         type: "POST",
-        url: "../Web/BasicSetting/Province.aspx/update",                          // 这里要修改服务器提交位置
+        url: "../Web/BasicSetting/Role.aspx/update",                          // 这里要修改服务器提交位置
         data: data,
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (json) {
             if (json.d == "1") {
                 $('#addAndUpdate').modal('hide');
-                $('#mainContent').load('../Web/BasicSetting/Province.aspx');      // 这里要修改服务器提交位置
+                $('#mainContent').load('../Web/BasicSetting/Role.aspx');      // 这里要修改服务器提交位置
                 showSuccess("操作成功");
             }
             else showError("操作出错:" + json.d);
