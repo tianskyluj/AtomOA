@@ -172,6 +172,8 @@ namespace ATOM.BLL
         {
             ATOM.BLL.GlobalSetting globalObj_bll = new ATOM.BLL.GlobalSetting();
             ATOM.Model.GlobalSetting globalObj_model = globalObj_bll.GetModelByCache(1);
+            if (globalObj_model == null)
+                globalObj_model = globalObj_bll.GetModel(1);
             return globalObj_model.CompanyName.ToStr();
         }
 
