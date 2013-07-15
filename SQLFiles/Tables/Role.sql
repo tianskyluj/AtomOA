@@ -18,6 +18,8 @@ CREATE TABLE [dbo].[Role](
 	[AreaIds]  [nvarchar](200) NULL DEFAULT '',
 	[DepartmentIds] [nvarchar](200) NULL DEFAULT '',
 	
+	[DepartmentNames] [nvarchar](200) NULL DEFAULT '',
+	
 	[state] [int] NULL DEFAULT ((0)),
 	[remark] [nvarchar](500) NULL DEFAULT '',
 	[createUser] [int] NULL DEFAULT ((0)),
