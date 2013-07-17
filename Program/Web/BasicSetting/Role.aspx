@@ -75,10 +75,10 @@
                                                 <%#DataBinder.Eval(Container.DataItem,"id")%></span>
                                         </td>
                                         <td>
-                                            <%#DataBinder.Eval(Container.DataItem,"provinceName")%>
+                                            <%#DataBinder.Eval(Container.DataItem,"roleName")%>
                                         </td>
                                         <td>
-                                            <%#DataBinder.Eval(Container.DataItem,"departmentName")%>
+                                            <%#DataBinder.Eval(Container.DataItem,"departmentNames")%>
                                         </td>
                                         <td>
                                             <%#DataBinder.Eval(Container.DataItem,"remark")%>
@@ -155,18 +155,11 @@
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label">所属省份</label>
-                <div class="controls">
-                    <lan:multiSelect runat="server" ID="province_edit" DefaultText="请选择省份" DefaultValue="0"
-                                     CssClass="province_edit">
-                    </lan:multiSelect>
-                </div>
-            </div>
-            <div class="control-group">
                 <label class="control-label">
                     所属部门</label>
                 <div class="controls">
-                     <lan:multiSelect runat="server" ID="department_edit" DefaultText="请选择部门" DefaultValue="0">
+                     <lan:multiSelect runat="server" ID="department_edit" DefaultText="请选择部门" DefaultValue="0"
+                                     CssClass="department_edit">
                      </lan:multiSelect>
                 </div>
             </div>

@@ -23,24 +23,11 @@ public partial class Web_BasicSetting_Role : BasePage
     protected void bindDropdownlist()
     {
         DataTable dt = new ATOM.BLL.Department().GetAllList().Tables[0];
-        this.department_search.DataSource = dt;
-        this.department_search.DataValueField = "id";
-        this.department_search.DataTextField = "departmentName";
-        this.department_search.DataBind();
-        this.department_search.Items.Add(new ListItem("请选择部门", "0"));
-        this.department_search.SelectedValue = "0";
 
         this.department_edit.DataSource = dt;
         this.department_edit.DataValueField = "id";
         this.department_edit.DataTextField = "departmentName";
         this.department_edit.DataBind();
-
-        dt = new ATOM.BLL.Province().GetAllList().Tables[0];
-        this.province_edit.DataSource = dt;
-        this.province_edit.DataTextField = "provinceName";
-        this.province_edit.DataValueField = "id";
-        this.province_edit.DataBind();
-        //this.province_edit.SelectedValue = "1,2";
     }
 
     /// <summary>
@@ -58,7 +45,7 @@ public partial class Web_BasicSetting_Role : BasePage
     /// </summary>
     protected void bindGridView()
     {
-        string strSql = " select a.*,b.departmentName from role a left join department b on a.departmentId=b.id where " + this.getSqlWhere();
+        string strSql = " select a.* from role a  where " + this.getSqlWhere();
         DataTable dt = Maticsoft.DBUtility.DbHelperSQL.Query(strSql.ToString()).Tables[0];
 
         this.dataRow.DataSource = dt;
@@ -81,10 +68,7 @@ public partial class Web_BasicSetting_Role : BasePage
             else
                 where.Append(" and remark like '%" + this.remark_search.Text.Trim() + "%' ");
         }
-        if (this.department_search.SelectedValue != "0")
-        {
-            where.Append(" and departmentId= "+this.department_search.SelectedValue);
-        }
+        
         return where.ToStr();
     }
 
@@ -95,15 +79,27 @@ public partial class Web_BasicSetting_Role : BasePage
     /// <param name="modelId"></param>
     /// <returns></returns>
     [WebMethod]
-    public static string update(string id, string roleName, string provinceIds, string remark)
+    public static string update(string id, string roleName, string departmentIds, string remark)
     {
         ATOM.BLL.Role role_BLL = new ATOM.BLL.Role();
         ATOM.Model.Role role_Model = new ATOM.Model.Role();
 
         role_Model.Id = id.ToInt();
         role_Model.RoleName = roleName.Trim();
-        role_Model.ProvinceIds = provinceIds.Trim();
+        role_Model.DepartmentIds = departmentIds.Trim();
         role_Model.remark = remark.Trim();
+
+        // 处理管理部门
+        string departmentNames = string.Empty;
+        for (int i = 0; i < departmentIds.Split(',').Length; i++)
+        {
+            if (departmentIds.Split(',')[i].ToInt() > 0) 
+            {
+                ATOM.BLL.Department department_BLL = new ATOM.BLL.Department();
+                departmentNames += department_BLL.GetModelByCache(departmentIds.Split(',')[i].ToInt()).DepartmentName + ",";
+            }
+        }
+        role_Model.DepartmentNames = departmentNames.Trim(',');
 
         if (role_BLL.AddUpdate(role_Model))
             return "1";

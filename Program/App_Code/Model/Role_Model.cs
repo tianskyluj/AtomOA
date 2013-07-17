@@ -20,6 +20,7 @@ namespace ATOM.Model
         private string _cityids = "";
         private string _areaids = "";
         private string _departmentids = "";
+        private string _departmentnames = "";
         private int? _state = 0;
         private string _remark = "";
         private int? _createuser = 0;
@@ -107,6 +108,14 @@ namespace ATOM.Model
         {
             set { _departmentids = value; }
             get { return _departmentids; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string DepartmentNames
+        {
+            set { _departmentnames = value; }
+            get { return _departmentnames; }
         }
         /// <summary>
         /// 

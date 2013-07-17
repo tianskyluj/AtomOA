@@ -307,27 +307,27 @@ $(document).ready(function () {
 // 初始化表单
 function clearForm(){                                                              // 这里修改初始化表单
     $('#id').val('0');
-    initMultiSelect('.province_edit');
-    $('#department_edit').val('');
+    $('#roleName_edit').val('');
+    initMultiSelect('.department_edit');
     $('#remark_edit').val('');
 }
 
 // 添加或或修改数据行函数
 function update() {
-    var provinceSelectOptions = getMultiSelectValue('.province_edit');
+    var departmentSelectOptions = getMultiSelectValue('.department_edit');
     if ($('#roleName_edit').val().length == 0) {
         showError("请填写角色名称");
         return false;
     }
-    if (provinceSelectOptions.length == 0)                            // 这里修改控制判断语句
+    if (departmentSelectOptions.length == 0)                            // 这里修改控制判断语句
     {
-        showError("请选择省份");
+        showError("请选择部门");
         return false;
     }
     var data = '{'                                                                  // 这里修改取数位置
                 + ' id: "' + $('#id').val() + '"'
                 + ',roleName: "' + $('#roleName_edit').val() + '"'
-                + ',provinceIds: "' + provinceSelectOptions + '"'
+                + ',departmentIds: "' + departmentSelectOptions + '"'
                 + ',remark:"' + $('#remark_edit').val() + '" '
                 + '}'; 
     $.ajax({
